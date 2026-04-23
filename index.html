@@ -53,6 +53,23 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .section-label{font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
 
+/* Gradient text */
+.grad-text{background:linear-gradient(135deg,var(--blue) 0%,var(--magenta) 50%,var(--orange) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.grad-text-warm{background:linear-gradient(135deg,var(--magenta) 0%,var(--orange) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.grad-text-cool{background:linear-gradient(135deg,var(--blue) 0%,var(--magenta) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* Background glows */
+.glow-wrap{position:relative;overflow:hidden}
+.glow{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;opacity:0.12}
+.glow-blue{background:var(--blue);width:600px;height:600px}
+.glow-magenta{background:var(--magenta);width:500px;height:500px}
+.glow-orange{background:var(--orange);width:400px;height:400px}
+
+/* Warm card hover glow */
+.card-glow{transition:all 0.3s ease;position:relative}
+.card-glow::after{content:'';position:absolute;inset:-1px;border-radius:inherit;background:linear-gradient(135deg,var(--blue),var(--magenta),var(--orange));opacity:0;z-index:-1;transition:opacity 0.3s ease;filter:blur(8px)}
+.card-glow:hover::after{opacity:0.15}
+
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-display);font-weight:600;border-radius:4px;border:2px solid transparent;cursor:pointer;transition:all 0.2s ease;text-decoration:none;white-space:nowrap}
 .btn:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
 .btn-primary{background:var(--magenta);color:#fff;border-color:var(--magenta);font-size:16px;height:48px;padding:0 28px}
@@ -109,7 +126,8 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15}
 .trust-strip span{display:flex;align-items:center;gap:4px;white-space:nowrap}
 
 /* STATS WIDGET */
-.stats-widget{background:var(--bg-white);border:1px solid var(--border);border-radius:12px;padding:24px;max-width:420px;box-shadow:0 8px 30px rgba(0,61,92,0.08)}
+.stats-widget{background:var(--bg-white);border-radius:12px;padding:24px;max-width:420px;box-shadow:0 8px 30px rgba(0,61,92,0.15),0 0 0 1px rgba(255,255,255,0.1);position:relative}
+.stats-widget::before{content:'';position:absolute;inset:-2px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--magenta),var(--orange));z-index:-1;opacity:0.4}
 @media(min-width:1024px){.stats-widget{margin-left:auto}}
 .sw-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
 .sw-label{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)}
@@ -156,6 +174,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15}
 @media(max-width:767px){.independence{padding:80px 0}}
 .indie-pill{display:inline-block;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);border:1px solid var(--blue-border);border-radius:20px;padding:4px 14px;margin-bottom:24px}
 .independence h2{font-family:var(--font-display);font-weight:700;font-size:30px;color:var(--text-on-dark);line-height:1.15;max-width:760px;margin:0 auto 32px}
+.independence .grad-text{background:linear-gradient(135deg,var(--blue) 0%,var(--magenta) 40%,var(--orange) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 @media(min-width:768px){.independence h2{font-size:48px}}
 .indie-body{font-size:17px;color:var(--text-muted-on-dark);line-height:1.7;max-width:700px;margin:0 auto 48px;text-align:left}
 .indie-body p+p{margin-top:20px}
@@ -246,6 +265,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15}
 /* FINAL CTA */
 .final-cta{background:var(--bg-navy);padding:100px 0;text-align:center}
 .final-cta h2{font-family:var(--font-display);font-weight:700;font-size:30px;color:var(--text-on-dark);margin-bottom:16px}
+.final-cta .grad-text{background:linear-gradient(135deg,var(--blue) 0%,var(--magenta) 40%,var(--orange) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 @media(min-width:768px){.final-cta h2{font-size:48px}}
 .final-cta-body{font-size:17px;color:var(--text-muted-on-dark);max-width:520px;margin:0 auto 32px;line-height:1.6}
 .final-cta-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-bottom:20px}
@@ -317,7 +337,7 @@ html{scroll-behavior:auto}
 <div class="container hero-inner">
 <div class="hero-content reveal">
 <p class="hero-eyebrow">Order Management &middot; Inventory &middot; Warehouse &middot; AI</p>
-<h1>You don&rsquo;t need a warehouse&nbsp;system.<br>You need operational&nbsp;control.</h1>
+<h1>You don&rsquo;t need a warehouse&nbsp;system.<br>You need <span class="grad-text-warm">operational&nbsp;control.</span></h1>
 <p class="hero-sub">Stok.ly gives retailers, wholesalers, and manufacturers one real-time stock truth across every channel, location, and system. Without the private equity price tag.</p>
 <div class="hero-ctas">
 <a href="#demo" class="btn btn-primary">Book a 30-Minute Demo</a>
@@ -330,7 +350,8 @@ html{scroll-behavior:auto}
 <span>Founded 2015</span>
 </div>
 </div>
-<div class="reveal" style="transition-delay:0.15s">
+<div class="reveal" style="transition-delay:0.15s;position:relative">
+<div class="glow glow-magenta" style="top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.2;width:300px;height:300px"></div>
 <div class="stats-widget">
 <div class="sw-header">
 <span class="sw-label">Live Operations</span>
@@ -382,22 +403,24 @@ html{scroll-behavior:auto}
 </div>
 </section>
 
-<section class="pain reveal">
-<div class="container">
+<section class="pain reveal glow-wrap">
+<div class="glow glow-blue" style="top:-200px;right:-200px"></div>
+<div class="glow glow-magenta" style="bottom:-150px;left:-250px"></div>
+<div class="container" style="position:relative;z-index:1">
 <p class="section-label">The Problem</p>
-<h2>Sound familiar?</h2>
+<h2>Sound <span class="grad-text-cool">familiar?</span></h2>
 <div class="pain-grid">
-<div class="pain-card">
+<div class="pain-card card-glow">
 <svg class="pain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><line x1="14" y1="14" x2="21" y2="21"/><line x1="21" y1="14" x2="14" y2="21"/></svg>
 <h3>Four systems. Zero agreement.</h3>
 <p>Stock in one spreadsheet. Orders in another. Warehouse locations in a third. Your WMS and your accounting package have never met.</p>
 </div>
-<div class="pain-card">
+<div class="pain-card card-glow">
 <svg class="pain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
 <h3>Wrong orders. Missed orders. Lost trust.</h3>
 <p>Marketplace orders arriving in the wrong warehouse. Items shipped that aren&rsquo;t in stock. Returns you didn&rsquo;t see coming. Each error is a customer you won&rsquo;t get back.</p>
 </div>
-<div class="pain-card">
+<div class="pain-card card-glow">
 <svg class="pain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
 <h3>Flying blind on replenishment.</h3>
 <p>No clear view of what&rsquo;s on each shelf, which warehouse holds which stock, or what to reorder before it runs out. Your 45-day lead times don&rsquo;t forgive guesswork.</p>
@@ -407,10 +430,12 @@ html{scroll-behavior:auto}
 </div>
 </section>
 
-<section class="independence reveal">
-<div class="container">
+<section class="independence reveal glow-wrap">
+<div class="glow glow-blue" style="top:-100px;left:50%;transform:translateX(-50%);opacity:0.15;width:800px;height:800px"></div>
+<div class="glow glow-magenta" style="bottom:-200px;right:-100px;opacity:0.08"></div>
+<div class="container" style="position:relative;z-index:1">
 <span class="indie-pill">Still Independently Owned</span>
-<h2>While our competitors were being acquired, we were getting better at what we do.</h2>
+<h2>While our competitors were being acquired, <span class="grad-text">we were getting better at what we do.</span></h2>
 <div class="indie-body">
 <p>Brightpearl was acquired by Sage. Cin7 sold to EQT Partners. Linnworks went to Marlin Equity. Orderwise joined the Forterro roll-up. Every major player in our market has been through the same private equity playbook: raise prices, cut support, extract margin.</p>
 <p>Stok.ly has not been acquired. We are not being optimised for exit. We are backed by Midven and run by the people who built the platform. Our customers have a first-name relationship with the people who answer the phone.</p>
@@ -433,13 +458,15 @@ html{scroll-behavior:auto}
 </div>
 </section>
 
-<section id="platform" class="platform reveal">
-<div class="container">
+<section id="platform" class="platform reveal glow-wrap">
+<div class="glow glow-magenta" style="top:100px;right:-300px"></div>
+<div class="glow glow-orange" style="bottom:50px;left:-200px;opacity:0.08"></div>
+<div class="container" style="position:relative;z-index:1">
 <p class="section-label">The Platform</p>
 <h2>One system for your entire operation.</h2>
 <p class="platform-sub">From goods-in to despatch. Warehouse floor to customer doorstep. B2C and B2B in the same platform.</p>
 <div class="platform-grid">
-<div class="feat-card">
+<div class="feat-card card-glow">
 <svg class="feat-card-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
 <h3>Warehouse Management</h3>
 <p>Barcode scanning via Android app. Multi-location bin inventory. Paperless pick, pack, and despatch. Real-time stock movements with full audit trails by user and timestamp.</p>
@@ -450,7 +477,7 @@ html{scroll-behavior:auto}
 <li>70+ courier and freight integrations</li>
 </ul>
 </div>
-<div class="feat-card">
+<div class="feat-card card-glow">
 <svg class="feat-card-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
 <h3>Order Management</h3>
 <p>Pull orders from Shopify, WooCommerce, Amazon, eBay, and B2B channels. Automatically allocated, routed, and tracked. Backorders, pre-orders, and proforma invoicing handled without manual intervention.</p>
@@ -461,7 +488,7 @@ html{scroll-behavior:auto}
 <li>Pre-allocation to inbound purchase orders</li>
 </ul>
 </div>
-<div class="feat-card">
+<div class="feat-card card-glow">
 <svg class="feat-card-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
 <h3>AI Demand Forecasting</h3>
 <p>Demand prediction, automated purchase order generation, and intelligent stock balancing across locations. Configurable to your lead times, minimum stock levels, and supplier constraints.</p>
@@ -472,7 +499,7 @@ html{scroll-behavior:auto}
 <li>Manufacturing demand planning</li>
 </ul>
 </div>
-<div class="feat-card">
+<div class="feat-card card-glow">
 <svg class="feat-card-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
 <h3>Manufacturing &amp; Kitting</h3>
 <p>Manage raw material inventory and finished goods in the same platform. Build kits and bundles whose available quantity is calculated in real time from component stock and pushed live to every connected sales channel.</p>
@@ -534,7 +561,7 @@ html{scroll-behavior:auto}
 <section id="proof" class="proof reveal">
 <div class="container">
 <p class="section-label">Customer Outcomes</p>
-<h2>What our customers say</h2>
+<h2>What our customers <span class="grad-text-warm">have to say</span></h2>
 <div class="proof-grid">
 <div class="proof-quotes">
 <div class="quote-card">
@@ -574,8 +601,9 @@ html{scroll-behavior:auto}
 </div>
 </section>
 
-<section id="pricing" class="pricing reveal">
-<div class="container">
+<section id="pricing" class="pricing reveal glow-wrap">
+<div class="glow glow-blue" style="top:-100px;left:50%;transform:translateX(-50%);opacity:0.08"></div>
+<div class="container" style="position:relative;z-index:1">
 <p class="section-label">Pricing</p>
 <h2>Transparent pricing. No per-user fees.</h2>
 <p class="pricing-sub">One platform covering WMS, OMS, POS, and AI. Priced for growing businesses, not enterprise budgets.</p>
@@ -634,9 +662,11 @@ html{scroll-behavior:auto}
 </div>
 </section>
 
-<section id="demo" class="final-cta">
-<div class="container">
-<h2>See your operation in Stok.ly.</h2>
+<section id="demo" class="final-cta glow-wrap">
+<div class="glow glow-magenta" style="top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.12;width:700px;height:700px"></div>
+<div class="glow glow-blue" style="top:0;left:20%;opacity:0.1;width:500px;height:500px"></div>
+<div class="container" style="position:relative;z-index:1">
+<h2>See your operation <span class="grad-text">in Stok.ly.</span></h2>
 <p class="final-cta-body">Book a 30-minute discovery call. We&rsquo;ll show you how Stok.ly works with your channels, your warehouse setup, and your specific workflows. And if it&rsquo;s not a fit, we&rsquo;ll tell you.</p>
 <div class="final-cta-buttons">
 <a href="https://calendly.com/stokly/online-demo" class="btn btn-primary" target="_blank" rel="noopener">Book Your Demo</a>
