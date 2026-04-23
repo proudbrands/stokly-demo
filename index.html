@@ -157,17 +157,24 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15}
 @media(min-width:768px){.logo-bar-row img{height:32px}}
 
 /* PAIN SECTION */
-.pain{background:var(--bg-light);padding:100px 0}
-@media(max-width:767px){.pain{padding:60px 0}}
-.pain h2{font-size:28px;color:var(--text-primary);margin-bottom:40px}
-@media(min-width:768px){.pain h2{font-size:42px}}
-.pain-grid{display:grid;gap:20px;margin-bottom:40px}
-@media(min-width:768px){.pain-grid{grid-template-columns:repeat(3,1fr)}}
-.pain-card{background:var(--bg-white);border:1px solid var(--border);border-radius:8px;padding:28px}
-.pain-icon{width:40px;height:40px;margin-bottom:16px;color:var(--red-alert)}
-.pain-card h3{font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--text-primary);margin-bottom:8px}
-.pain-card p{font-size:15px;color:var(--text-muted);line-height:1.6}
-.pain-footer{text-align:center;font-size:16px;color:var(--text-muted)}
+.reality{background:var(--bg-light);padding:120px 0}
+@media(max-width:767px){.reality{padding:70px 0}}
+.reality-inner{max-width:720px;margin:0 auto}
+.reality h2{font-size:32px;color:var(--text-primary);margin-bottom:48px;text-align:center}
+@media(min-width:768px){.reality h2{font-size:48px}}
+.reality-line{display:flex;align-items:flex-start;gap:20px;margin-bottom:40px;position:relative}
+.reality-line::before{content:'';position:absolute;left:15px;top:40px;bottom:-40px;width:2px;background:linear-gradient(to bottom,var(--blue),var(--magenta))}
+.reality-line:last-of-type::before{display:none}
+.reality-marker{flex-shrink:0;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:13px;font-weight:600;color:#fff;position:relative;z-index:1}
+.reality-marker.m1{background:var(--blue)}
+.reality-marker.m2{background:var(--magenta)}
+.reality-marker.m3{background:var(--orange)}
+.reality-copy h3{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text-primary);margin-bottom:6px}
+.reality-copy p{font-size:16px;color:var(--text-secondary);line-height:1.65}
+.reality-copy .highlight{font-weight:600;color:var(--text-primary)}
+.reality-kicker{text-align:center;margin-top:56px;padding-top:40px;border-top:1px solid var(--border)}
+.reality-kicker p{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--text-primary);max-width:560px;margin:0 auto;line-height:1.4}
+@media(min-width:768px){.reality-kicker p{font-size:26px}}
 
 /* INDEPENDENCE */
 .independence{background:var(--bg-navy);padding:120px 0;text-align:center}
@@ -403,30 +410,41 @@ html{scroll-behavior:auto}
 </div>
 </section>
 
-<section class="pain reveal glow-wrap">
+<section class="reality reveal glow-wrap">
 <div class="glow glow-blue" style="top:-200px;right:-200px"></div>
 <div class="glow glow-magenta" style="bottom:-150px;left:-250px"></div>
 <div class="container" style="position:relative;z-index:1">
-<p class="section-label">The Problem</p>
-<h2>Sound <span class="grad-text-cool">familiar?</span></h2>
-<div class="pain-grid">
-<div class="pain-card card-glow">
-<svg class="pain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><line x1="14" y1="14" x2="21" y2="21"/><line x1="21" y1="14" x2="14" y2="21"/></svg>
-<h3>Four systems. Zero agreement.</h3>
-<p>Stock in one spreadsheet. Orders in another. Warehouse locations in a third. Your WMS and your accounting package have never met.</p>
-</div>
-<div class="pain-card card-glow">
-<svg class="pain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-<h3>Wrong orders. Missed orders. Lost trust.</h3>
-<p>Marketplace orders arriving in the wrong warehouse. Items shipped that aren&rsquo;t in stock. Returns you didn&rsquo;t see coming. Each error is a customer you won&rsquo;t get back.</p>
-</div>
-<div class="pain-card card-glow">
-<svg class="pain-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
-<h3>Flying blind on replenishment.</h3>
-<p>No clear view of what&rsquo;s on each shelf, which warehouse holds which stock, or what to reorder before it runs out. Your 45-day lead times don&rsquo;t forgive guesswork.</p>
+<div class="reality-inner">
+<h2>We&rsquo;ve heard <span class="grad-text-cool">this story</span> before.</h2>
+
+<div class="reality-line">
+<span class="reality-marker m1">1</span>
+<div class="reality-copy">
+<h3>It starts with a spreadsheet.</h3>
+<p>Someone builds a stock tracker in Excel. It works for a while. Then you add a second warehouse. Then a Shopify store. Then Amazon. Now you&rsquo;ve got <span class="highlight">four systems that have never agreed on a single number.</span></p>
 </div>
 </div>
-<p class="pain-footer">These aren&rsquo;t software problems. They&rsquo;re what happens when you&rsquo;ve outgrown the tools you started with.</p>
+
+<div class="reality-line">
+<span class="reality-marker m2">2</span>
+<div class="reality-copy">
+<h3>Then the mistakes start.</h3>
+<p>An order ships from the wrong location. A customer buys something that&rsquo;s been out of stock for a week. A return lands and nobody updates anything. <span class="highlight">Each one costs you a customer you already paid to acquire.</span></p>
+</div>
+</div>
+
+<div class="reality-line">
+<span class="reality-marker m3">3</span>
+<div class="reality-copy">
+<h3>Then you stop trusting your own data.</h3>
+<p>You walk the warehouse floor to count stock because the system can&rsquo;t be trusted. You over-order because you&rsquo;d rather have dead stock than a stockout. <span class="highlight">Your 45-day lead times don&rsquo;t forgive guesswork.</span></p>
+</div>
+</div>
+
+<div class="reality-kicker">
+<p>This isn&rsquo;t a software problem. It&rsquo;s what happens when you&rsquo;ve <span class="grad-text-warm">outgrown the tools you started with.</span></p>
+</div>
+</div>
 </div>
 </section>
 
