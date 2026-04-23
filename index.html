@@ -125,27 +125,56 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15}
 .trust-strip{display:flex;flex-wrap:wrap;gap:20px;font-size:13px;color:rgba(255,255,255,0.5)}
 .trust-strip span{display:flex;align-items:center;gap:4px;white-space:nowrap}
 
-/* STATS WIDGET */
-.stats-widget{background:var(--bg-white);border-radius:12px;padding:24px;max-width:420px;box-shadow:0 8px 30px rgba(0,61,92,0.15),0 0 0 1px rgba(255,255,255,0.1);position:relative}
-.stats-widget::before{content:'';position:absolute;inset:-2px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--magenta),var(--orange));z-index:-1;opacity:0.4}
-@media(min-width:1024px){.stats-widget{margin-left:auto}}
-.sw-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
-.sw-label{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)}
-.sw-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,155,222,0.4)}50%{box-shadow:0 0 0 6px rgba(0,155,222,0)}}
-.sw-metrics{display:flex;flex-direction:column;gap:16px;margin-bottom:20px}
-.sw-row{display:flex;align-items:baseline;justify-content:space-between}
-.sw-row-label{font-family:var(--font-body);font-size:13px;color:var(--text-muted)}
-.sw-row-value{font-family:var(--font-mono);font-size:24px;font-weight:500;color:var(--text-primary)}
-.sw-row-delta{font-family:var(--font-mono);font-size:12px;color:var(--blue)}
-.sw-divider{height:1px;background:var(--border);margin:4px 0 16px}
-.sw-orders{display:flex;flex-direction:column;gap:8px}
-.sw-order{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text-muted)}
-.sw-order-id{font-family:var(--font-mono);font-weight:500;color:var(--text-primary);min-width:48px}
-.sw-pill{font-size:10px;font-weight:600;padding:2px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:0.03em}
-.sw-pill.picked{background:var(--orange-dim);color:var(--orange)}
-.sw-pill.packed{background:var(--blue-dim);color:var(--blue)}
-.sw-pill.shipped{background:var(--magenta-dim);color:var(--magenta)}
+/* DASHBOARD WIDGET */
+.dash{background:var(--bg-white);border-radius:16px;max-width:460px;box-shadow:0 20px 60px rgba(0,30,50,0.25),0 0 0 1px rgba(255,255,255,0.1);position:relative;overflow:hidden}
+.dash::before{content:'';position:absolute;inset:-2px;border-radius:18px;background:linear-gradient(135deg,var(--blue),var(--magenta),var(--orange));z-index:-1;opacity:0.5}
+@media(min-width:1024px){.dash{margin-left:auto}}
+/* Dashboard chrome bar */
+.dash-chrome{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#0F1F2E;border-bottom:1px solid rgba(255,255,255,0.08)}
+.dash-chrome-left{display:flex;align-items:center;gap:8px}
+.dash-chrome-dots{display:flex;gap:5px}
+.dash-chrome-dots span{width:8px;height:8px;border-radius:50%}
+.dash-chrome-dots span:nth-child(1){background:#E24B4A}
+.dash-chrome-dots span:nth-child(2){background:#FF8300}
+.dash-chrome-dots span:nth-child(3){background:#1D9E75}
+.dash-chrome-tab{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.08);padding:3px 12px;border-radius:4px}
+.dash-chrome-right{display:flex;align-items:center;gap:6px}
+.dash-chrome-avatar{width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--magenta))}
+/* Dashboard body */
+.dash-body{padding:0}
+/* Metric cards row */
+.dash-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.dash-metric{padding:16px;text-align:center;border-bottom:1px solid var(--border);position:relative}
+.dash-metric+.dash-metric{border-left:1px solid var(--border)}
+.dash-metric-label{font-family:var(--font-body);font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px}
+.dash-metric-value{font-family:var(--font-mono);font-size:22px;font-weight:500;color:var(--text-primary);line-height:1}
+.dash-metric-delta{font-family:var(--font-mono);font-size:10px;margin-top:4px;display:inline-block;padding:1px 6px;border-radius:8px}
+.dash-metric-delta.up{background:rgba(29,158,117,0.1);color:#1D9E75}
+/* Sparkline chart area */
+.dash-chart{padding:12px 16px;border-bottom:1px solid var(--border);background:var(--bg-light)}
+.dash-chart-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.dash-chart-title{font-family:var(--font-body);font-size:11px;font-weight:600;color:var(--text-secondary)}
+.dash-chart-period{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);background:var(--bg-white);padding:2px 8px;border-radius:4px;border:1px solid var(--border)}
+.dash-chart svg{width:100%;height:auto}
+/* Order table */
+.dash-table{padding:0}
+.dash-table-header{display:grid;grid-template-columns:80px 1fr 80px 60px;padding:8px 16px;font-family:var(--font-body);font-size:10px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;background:var(--bg-light);border-bottom:1px solid var(--border)}
+.dash-table-row{display:grid;grid-template-columns:80px 1fr 80px 60px;padding:10px 16px;align-items:center;border-bottom:1px solid var(--border);transition:background 0.15s}
+.dash-table-row:last-child{border-bottom:none}
+.dash-table-row:hover{background:var(--bg-light)}
+.dash-table-row .order-id{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--text-primary)}
+.dash-table-row .order-customer{font-size:13px;color:var(--text-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dash-table-row .order-items{font-family:var(--font-mono);font-size:12px;color:var(--text-muted);text-align:right}
+.dash-pill{font-size:9px;font-weight:600;padding:3px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:0.04em;text-align:center}
+.dash-pill.picked{background:var(--orange-dim);color:var(--orange)}
+.dash-pill.packed{background:var(--blue-dim);color:var(--blue)}
+.dash-pill.shipped{background:var(--magenta-dim);color:var(--magenta)}
+.dash-pill.processing{background:rgba(29,158,117,0.1);color:#1D9E75}
+/* Live indicator */
+.dash-live{display:flex;align-items:center;gap:6px;padding:10px 16px;background:var(--bg-light);border-top:1px solid var(--border)}
+.dash-live-dot{width:6px;height:6px;border-radius:50%;background:#1D9E75;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(29,158,117,0.4)}50%{box-shadow:0 0 0 4px rgba(29,158,117,0)}}
+.dash-live-text{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:0.04em}
 
 /* SECTION TRANSITIONS */
 .section-wave{display:block;width:100%;height:60px;position:relative;margin-top:-1px}
@@ -375,34 +404,84 @@ html{scroll-behavior:auto}
 </div>
 </div>
 <div class="reveal" style="transition-delay:0.15s;position:relative">
-<div class="glow glow-magenta" style="top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.2;width:300px;height:300px"></div>
-<div class="stats-widget">
-<div class="sw-header">
-<span class="sw-label">Live Operations</span>
-<span class="sw-dot"></span>
+<div class="glow glow-magenta" style="top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.25;width:400px;height:400px"></div>
+<div class="dash">
+<div class="dash-chrome">
+<div class="dash-chrome-left">
+<div class="dash-chrome-dots"><span></span><span></span><span></span></div>
+<span class="dash-chrome-tab">app.stok.ly/operations</span>
 </div>
-<div class="sw-metrics">
-<div class="sw-row">
-<span class="sw-row-label">Orders Today</span>
-<span class="sw-row-value" data-target="847">0</span>
-<span class="sw-row-delta">+12.3%</span>
-</div>
-<div class="sw-row">
-<span class="sw-row-label">Pick Accuracy</span>
-<span class="sw-row-value" data-target="99.7" data-suffix="%" data-decimals="1">0</span>
-<span class="sw-row-delta">+0.4%</span>
-</div>
-<div class="sw-row">
-<span class="sw-row-label">Units Shipped</span>
-<span class="sw-row-value" data-target="2341">0</span>
-<span class="sw-row-delta">+8.1%</span>
+<div class="dash-chrome-right">
+<div class="dash-chrome-avatar"></div>
 </div>
 </div>
-<div class="sw-divider"></div>
-<div class="sw-orders">
-<div class="sw-order"><span class="sw-order-id">#4821</span><span class="sw-pill picked">Picked</span><span>6 items</span></div>
-<div class="sw-order"><span class="sw-order-id">#4820</span><span class="sw-pill packed">Packed</span><span>3 items</span></div>
-<div class="sw-order"><span class="sw-order-id">#4819</span><span class="sw-pill shipped">Shipped</span><span>11 items</span></div>
+<div class="dash-body">
+<div class="dash-metrics">
+<div class="dash-metric">
+<div class="dash-metric-label">Orders</div>
+<div class="dash-metric-value" data-target="847">0</div>
+<span class="dash-metric-delta up">+12.3%</span>
+</div>
+<div class="dash-metric">
+<div class="dash-metric-label">Accuracy</div>
+<div class="dash-metric-value" data-target="99.7" data-suffix="%" data-decimals="1">0</div>
+<span class="dash-metric-delta up">+0.4%</span>
+</div>
+<div class="dash-metric">
+<div class="dash-metric-label">Shipped</div>
+<div class="dash-metric-value" data-target="2341">0</div>
+<span class="dash-metric-delta up">+8.1%</span>
+</div>
+</div>
+<div class="dash-chart">
+<div class="dash-chart-header">
+<span class="dash-chart-title">Orders (7 day)</span>
+<span class="dash-chart-period">This week</span>
+</div>
+<svg viewBox="0 0 400 80" aria-hidden="true">
+<defs>
+<linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#009BDE" stop-opacity="0.2"/><stop offset="100%" stop-color="#009BDE" stop-opacity="0"/></linearGradient>
+<linearGradient id="lg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#009BDE"/><stop offset="100%" stop-color="#EA1D76"/></linearGradient>
+</defs>
+<polyline points="0,65 57,55 114,58 171,35 228,40 285,22 342,18 400,8" fill="url(#cg)" stroke="none"/>
+<polyline points="0,65 57,55 114,58 171,35 228,40 285,22 342,18 400,8" fill="none" stroke="url(#lg)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="400" cy="8" r="4" fill="#EA1D76"/>
+<circle cx="400" cy="8" r="8" fill="none" stroke="#EA1D76" stroke-width="1" opacity="0.3"/>
+</svg>
+</div>
+<div class="dash-table">
+<div class="dash-table-header">
+<span>Order</span><span>Customer</span><span>Status</span><span>Items</span>
+</div>
+<div class="dash-table-row">
+<span class="order-id">#4821</span>
+<span class="order-customer">J. Richardson</span>
+<span><span class="dash-pill processing">Processing</span></span>
+<span class="order-items">6</span>
+</div>
+<div class="dash-table-row">
+<span class="order-id">#4820</span>
+<span class="order-customer">Smith &amp; Co Ltd</span>
+<span><span class="dash-pill packed">Packed</span></span>
+<span class="order-items">3</span>
+</div>
+<div class="dash-table-row">
+<span class="order-id">#4819</span>
+<span class="order-customer">Heritage Apparel</span>
+<span><span class="dash-pill shipped">Shipped</span></span>
+<span class="order-items">11</span>
+</div>
+<div class="dash-table-row">
+<span class="order-id">#4818</span>
+<span class="order-customer">Paving Superstore</span>
+<span><span class="dash-pill picked">Picked</span></span>
+<span class="order-items">24</span>
+</div>
+</div>
+<div class="dash-live">
+<span class="dash-live-dot"></span>
+<span class="dash-live-text">Live &middot; Warehouse 1 of 3 &middot; Last sync 4s ago</span>
+</div>
 </div>
 </div>
 </div>
