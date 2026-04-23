@@ -70,7 +70,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15}
 .card-glow::after{content:'';position:absolute;inset:-1px;border-radius:inherit;background:linear-gradient(135deg,var(--blue),var(--magenta),var(--orange));opacity:0;z-index:-1;transition:opacity 0.3s ease;filter:blur(8px)}
 .card-glow:hover::after{opacity:0.15}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-display);font-weight:600;border-radius:4px;border:2px solid transparent;cursor:pointer;transition:all 0.2s ease;text-decoration:none;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-display);font-weight:600;border-radius:8px;border:2px solid transparent;cursor:pointer;transition:all 0.25s cubic-bezier(0.16,1,0.3,1);text-decoration:none;white-space:nowrap}
 .btn:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
 .btn-primary{background:var(--magenta);color:#fff;border-color:var(--magenta);font-size:16px;height:48px;padding:0 28px}
 .btn-primary:hover{background:var(--magenta-hover);border-color:var(--magenta-hover);transform:translateY(-1px)}
@@ -132,7 +132,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15}
 .sw-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
 .sw-label{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)}
 .sw-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(29,158,117,0.4)}50%{box-shadow:0 0 0 6px rgba(29,158,117,0)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,155,222,0.4)}50%{box-shadow:0 0 0 6px rgba(0,155,222,0)}}
 .sw-metrics{display:flex;flex-direction:column;gap:16px;margin-bottom:20px}
 .sw-row{display:flex;align-items:baseline;justify-content:space-between}
 .sw-row-label{font-family:var(--font-body);font-size:13px;color:var(--text-muted)}
@@ -147,8 +147,12 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15}
 .sw-pill.packed{background:var(--blue-dim);color:var(--blue)}
 .sw-pill.shipped{background:var(--magenta-dim);color:var(--magenta)}
 
+/* SECTION TRANSITIONS */
+.section-wave{display:block;width:100%;height:60px;position:relative;margin-top:-1px}
+.section-wave svg{position:absolute;bottom:0;width:100%;height:100%}
+
 /* LOGO BAR */
-.logo-bar{background:var(--bg-white);padding:60px 0}
+.logo-bar{background:var(--bg-white);padding:80px 0 60px}
 .logo-bar-label{text-align:center;font-size:13px;font-weight:400;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:32px}
 .logo-bar-row{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:32px}
 @media(min-width:768px){.logo-bar-row{gap:48px}}
@@ -200,13 +204,24 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15}
 .platform-sub{font-size:17px;color:var(--text-muted);max-width:560px;margin-bottom:48px}
 .platform-grid{display:grid;gap:20px}
 @media(min-width:768px){.platform-grid{grid-template-columns:repeat(2,1fr)}}
-.feat-card{background:var(--bg-light);border-radius:12px;padding:32px;border-left:4px solid var(--blue)}
+.feat-card{background:var(--bg-light);border-radius:16px;padding:36px;border:1px solid transparent;transition:all 0.3s cubic-bezier(0.16,1,0.3,1)}
+.feat-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,61,92,0.1)}
+.feat-card.feat-hero{background:var(--bg-navy);color:var(--text-on-dark);grid-column:1/-1;padding:48px}
+.feat-card.feat-hero h3{color:var(--text-on-dark);font-size:28px}
+.feat-card.feat-hero>p{color:var(--text-muted-on-dark)}
+.feat-card.feat-hero .feat-list li{color:var(--text-on-dark)}
+.feat-card.feat-hero .feat-list li::before{border-color:var(--orange)}
+.feat-card.feat-hero .feat-card-icon{color:var(--orange)}
+@media(min-width:768px){.feat-card.feat-hero{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.feat-card.feat-hero .feat-hero-left{display:flex;flex-direction:column}
+}
 .feat-card-icon{color:var(--blue);margin-bottom:16px}
 .feat-card h3{font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--text-primary);margin-bottom:8px}
 .feat-card>p{font-size:15px;color:var(--text-muted);line-height:1.6;margin-bottom:16px}
-.feat-list{display:flex;flex-direction:column;gap:8px}
-.feat-list li{font-size:14px;color:var(--text-primary);padding-left:20px;position:relative}
+.feat-list{display:flex;flex-direction:column;gap:10px}
+.feat-list li{font-size:14px;color:var(--text-primary);padding-left:24px;position:relative;line-height:1.5}
 .feat-list li::before{content:'';position:absolute;left:0;top:6px;width:10px;height:10px;border-radius:50%;border:2px solid var(--blue)}
+.feat-badge{display:inline-block;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:16px;background:rgba(255,131,0,0.15);color:var(--orange)}
 
 /* INTEGRATIONS */
 .integrations{background:var(--bg-light);padding:80px 0}
@@ -215,7 +230,9 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15}
 @media(min-width:768px){.integrations h2{font-size:36px}}
 .int-grid{display:grid;gap:20px}
 @media(min-width:768px){.int-grid{grid-template-columns:repeat(3,1fr)}}
-.int-group{background:var(--bg-white);border-radius:12px;padding:28px}
+.int-group{background:var(--bg-white);border-radius:16px;padding:32px;position:relative;overflow:hidden;transition:all 0.3s cubic-bezier(0.16,1,0.3,1)}
+.int-group::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--magenta),var(--orange))}
+.int-group:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,61,92,0.08)}
 .int-count{font-family:var(--font-mono);font-size:48px;font-weight:500;color:var(--orange);line-height:1;margin-bottom:4px}
 .int-group h3{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px}
 .int-logos{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:12px}
@@ -225,26 +242,26 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15}
 .int-cta{text-align:center;margin-top:32px}
 
 /* PROOF */
-.proof{background:var(--bg-light);padding:100px 0}
-@media(max-width:767px){.proof{padding:60px 0}}
-.proof h2{font-size:28px;color:var(--text-primary);margin-bottom:40px}
+.proof{background:var(--bg-white);padding:120px 0}
+@media(max-width:767px){.proof{padding:70px 0}}
+.proof h2{font-size:28px;color:var(--text-primary);margin-bottom:48px;text-align:center}
 @media(min-width:768px){.proof h2{font-size:42px}}
-.proof-grid{display:grid;gap:32px}
-@media(min-width:1024px){.proof-grid{grid-template-columns:1.2fr 0.8fr}}
-.proof-quotes{display:flex;flex-direction:column;gap:20px}
-.quote-card{background:var(--bg-white);border:1px solid var(--border);border-radius:8px;padding:28px;border-left:4px solid var(--magenta)}
-.quote-card blockquote{font-family:var(--font-body);font-size:16px;color:var(--text-primary);line-height:1.6;margin-bottom:16px;font-style:italic}
+.proof-hero-quote{max-width:800px;margin:0 auto 48px;text-align:center;position:relative;padding:48px 0}
+.proof-hero-quote::before{content:'\201C';position:absolute;top:0;left:50%;transform:translateX(-50%);font-family:var(--font-display);font-size:120px;color:var(--magenta);opacity:0.12;line-height:1}
+.proof-hero-quote blockquote{font-family:var(--font-display);font-size:24px;font-weight:600;color:var(--text-primary);line-height:1.4;margin-bottom:20px}
+@media(min-width:768px){.proof-hero-quote blockquote{font-size:32px}}
+.proof-hero-quote cite{font-style:normal;font-size:14px;color:var(--text-muted);display:block}
+.proof-grid{display:grid;gap:20px}
+@media(min-width:768px){.proof-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.proof-grid{grid-template-columns:1fr 1fr 1fr}}
+.quote-card{background:var(--bg-light);border:none;border-radius:16px;padding:28px;position:relative;overflow:hidden}
+.quote-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--magenta),var(--orange))}
+.quote-card blockquote{font-family:var(--font-body);font-size:15px;color:var(--text-primary);line-height:1.6;margin-bottom:16px;font-style:italic}
 .quote-card cite{font-style:normal;font-size:13px;color:var(--text-muted);display:block}
-.review-panel{display:flex;flex-direction:column;gap:20px}
-.review-row{display:flex;align-items:center;gap:16px}
-.review-platform{font-family:var(--font-body);font-size:14px;font-weight:600;color:var(--text-primary);min-width:80px}
-.review-score{font-family:var(--font-mono);font-size:20px;font-weight:500;color:var(--blue)}
-.review-stars{display:flex;gap:2px}
-.review-stars .star{width:14px;height:14px;display:inline-block}
-.star-filled{color:var(--blue)}
-.star-empty{color:var(--blue-border)}
-.review-count{font-size:12px;color:var(--text-muted)}
-.proof-note{font-size:14px;color:var(--text-muted);margin-top:20px;line-height:1.5}
+.review-strip{display:flex;justify-content:center;gap:16px;margin-top:48px;flex-wrap:wrap}
+.review-chip{display:flex;align-items:center;gap:10px;background:var(--bg-light);border-radius:40px;padding:8px 20px 8px 16px;border:1px solid var(--border)}
+.review-chip-name{font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--text-secondary)}
+.review-chip-score{font-family:var(--font-mono);font-size:15px;font-weight:500;color:var(--blue)}
 
 /* PRICING */
 .pricing{background:var(--bg-white);padding:100px 0}
@@ -255,9 +272,9 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15}
 .pricing-grid{display:grid;gap:20px}
 @media(min-width:768px){.pricing-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1024px){.pricing-grid{grid-template-columns:repeat(4,1fr)}}
-.price-card{background:var(--bg-white);border:1px solid var(--border);border-radius:12px;padding:28px;display:flex;flex-direction:column;position:relative;transition:border-color 0.2s}
-.price-card:hover{border-color:var(--blue)}
-.price-card.featured{border:2px solid var(--magenta)}
+.price-card{background:var(--bg-white);border:1px solid var(--border);border-radius:16px;padding:32px;display:flex;flex-direction:column;position:relative;transition:all 0.3s cubic-bezier(0.16,1,0.3,1)}
+.price-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,61,92,0.1);border-color:var(--blue)}
+.price-card.featured{border:2px solid var(--magenta);box-shadow:0 8px 30px rgba(234,29,118,0.1)}
 .price-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--magenta);color:#fff;font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:3px 12px;border-radius:12px;white-space:nowrap}
 .price-card h3{font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--text-primary);margin-bottom:8px}
 .price-amount{font-family:var(--font-mono);font-size:28px;font-weight:500;color:var(--text-primary);margin-bottom:4px}
@@ -392,6 +409,10 @@ html{scroll-behavior:auto}
 </div>
 </section>
 
+<div class="section-wave" style="background:var(--bg-white)">
+<svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg-navy)"><path d="M0,60 C360,0 1080,0 1440,60 L1440,0 L0,0 Z"/></svg>
+</div>
+
 <section class="logo-bar">
 <div class="container">
 <p class="logo-bar-label">Trusted by brands across the UK</p>
@@ -484,15 +505,20 @@ html{scroll-behavior:auto}
 <h2>One system for your entire operation.</h2>
 <p class="platform-sub">From goods-in to despatch. Warehouse floor to customer doorstep. B2C and B2B in the same platform.</p>
 <div class="platform-grid">
-<div class="feat-card card-glow">
-<svg class="feat-card-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+<div class="feat-card feat-hero card-glow">
+<div class="feat-hero-left">
+<span class="feat-badge">Core Module</span>
+<svg class="feat-card-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
 <h3>Warehouse Management</h3>
 <p>Barcode scanning via Android app. Multi-location bin inventory. Paperless pick, pack, and despatch. Real-time stock movements with full audit trails by user and timestamp.</p>
+</div>
 <ul class="feat-list">
 <li>Barcode scanning with Android warehouse app</li>
 <li>Multi-warehouse bin management</li>
 <li>Automated pick-face replenishment</li>
 <li>70+ courier and freight integrations</li>
+<li>Goods-in processing with PO matching</li>
+<li>Full audit trail by user and timestamp</li>
 </ul>
 </div>
 <div class="feat-card card-glow">
@@ -576,45 +602,36 @@ html{scroll-behavior:auto}
 </div>
 </section>
 
-<section id="proof" class="proof reveal">
-<div class="container">
+<section id="proof" class="proof reveal glow-wrap">
+<div class="glow glow-magenta" style="top:0;left:30%;opacity:0.06;width:600px;height:600px"></div>
+<div class="container" style="position:relative;z-index:1">
 <p class="section-label">Customer Outcomes</p>
 <h2>What our customers <span class="grad-text-warm">have to say</span></h2>
-<div class="proof-grid">
-<div class="proof-quotes">
-<div class="quote-card">
-<blockquote>&ldquo;We&rsquo;ve found this in Stok.ly and have been with them for the last 4 years. The Stock App cut our pick and pack errors to almost zero overnight.&rdquo;</blockquote>
+
+<div class="proof-hero-quote">
+<blockquote>&ldquo;The Stock App cut our pick and pack errors to almost zero overnight. We&rsquo;ve been with Stok.ly for 4 years now.&rdquo;</blockquote>
 <cite>Matt, Appleton Sweets</cite>
 </div>
+
+<div class="proof-grid">
 <div class="quote-card">
-<blockquote>&ldquo;Stok.ly works really well. It&rsquo;s user friendly and does everything we expected. The app is very easy for the guys to use, new members of staff pick it up very quickly.&rdquo;</blockquote>
+<blockquote>&ldquo;Stok.ly works really well. It&rsquo;s user friendly and does everything we expected. New staff pick it up very quickly.&rdquo;</blockquote>
 <cite>Ryan, Senior Sales &amp; Systems Manager, Airtec</cite>
 </div>
 <div class="quote-card">
-<blockquote>&ldquo;Having used other systems in the past we find Stok.ly to be second to none. The software is comprehensive, stable and user friendly.&rdquo;</blockquote>
-<cite>Scott B., Operations Manager &middot; Capterra verified review</cite>
+<blockquote>&ldquo;Having used other systems in the past we find Stok.ly to be second to none. Comprehensive, stable and user friendly.&rdquo;</blockquote>
+<cite>Scott B., Operations Manager &middot; Capterra</cite>
+</div>
+<div class="quote-card">
+<blockquote>&ldquo;Stok.ly has revolutionised the way I manage my inventory, and I couldn&rsquo;t be more thrilled.&rdquo;</blockquote>
+<cite>Hand Tool Centre</cite>
 </div>
 </div>
-<div>
-<div class="review-panel">
-<div class="review-row">
-<span class="review-platform">Trustpilot</span>
-<span class="review-score">4.0 / 5</span>
-<span class="review-count">42 reviews</span>
-</div>
-<div class="review-row">
-<span class="review-platform">Capterra</span>
-<span class="review-score">4.9 / 5</span>
-<span class="review-count">20 verified</span>
-</div>
-<div class="review-row">
-<span class="review-platform">G2</span>
-<span class="review-score">4.4 / 5</span>
-<span class="review-count">verified</span>
-</div>
-</div>
-<p class="proof-note">Support is rated as the top differentiator in every independent review. 90% of Capterra reviews are 5-star.</p>
-</div>
+
+<div class="review-strip">
+<div class="review-chip"><span class="review-chip-name">Trustpilot</span><span class="review-chip-score">4.0/5</span></div>
+<div class="review-chip"><span class="review-chip-name">Capterra</span><span class="review-chip-score">4.9/5</span></div>
+<div class="review-chip"><span class="review-chip-name">G2</span><span class="review-chip-score">4.4/5</span></div>
 </div>
 </div>
 </section>
