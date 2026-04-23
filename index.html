@@ -107,23 +107,29 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15}
 }
 
 /* HERO */
-.hero{position:relative;min-height:100vh;background:var(--bg-navy);overflow:hidden;display:flex;align-items:center;padding:100px 0 80px}
-.hero-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.45}
-.hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(0,61,92,0.82) 0%,rgba(0,61,92,0.55) 50%,rgba(0,61,92,0.75) 100%)}
-.hero-grid{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(0,155,222,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,155,222,0.05) 1px,transparent 1px);background-size:60px 60px}
-.hero-inner{position:relative;z-index:2;display:grid;gap:48px;align-items:center}
-@media(min-width:1024px){.hero-inner{grid-template-columns:55fr 45fr;gap:64px}}
-.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:20px}
-.hero h1{font-family:var(--font-display);font-weight:700;font-size:30px;color:#fff;line-height:1.1;margin-bottom:24px}
-@media(min-width:768px){.hero h1{font-size:42px}}
-@media(min-width:1024px){.hero h1{font-size:56px}}
-.hero-sub{font-size:16px;color:rgba(255,255,255,0.7);max-width:480px;line-height:1.6;margin-bottom:32px}
-@media(min-width:768px){.hero-sub{font-size:18px}}
-.hero-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-bottom:40px}
+.hero{position:relative;min-height:100vh;background:var(--bg-navy);overflow:hidden;display:flex;align-items:center;padding:120px 0 100px}
+.hero-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.35}
+.hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(0,43,66,0.9) 0%,rgba(0,61,92,0.7) 40%,rgba(0,61,92,0.85) 100%)}
+.hero-grid{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(0,155,222,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,155,222,0.04) 1px,transparent 1px);background-size:60px 60px}
+.hero-inner{position:relative;z-index:2;text-align:center;max-width:800px;margin:0 auto}
+.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:24px}
+.hero h1{font-family:var(--font-display);font-weight:700;font-size:36px;color:#fff;line-height:1.08;margin-bottom:28px}
+@media(min-width:768px){.hero h1{font-size:56px}}
+@media(min-width:1024px){.hero h1{font-size:72px}}
+.hero-sub{font-size:17px;color:rgba(255,255,255,0.65);max-width:560px;margin:0 auto 36px;line-height:1.65}
+@media(min-width:768px){.hero-sub{font-size:20px}}
+.hero-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-bottom:48px}
 .hero-text-link{font-family:var(--font-display);font-weight:600;font-size:16px;color:#fff;display:inline-flex;align-items:center;gap:6px;transition:gap 0.2s}
 .hero-text-link:hover{gap:10px}
-.trust-strip{display:flex;flex-wrap:wrap;gap:20px;font-size:13px;color:rgba(255,255,255,0.5)}
+.trust-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;font-size:13px;color:rgba(255,255,255,0.4)}
 .trust-strip span{display:flex;align-items:center;gap:4px;white-space:nowrap}
+/* Hero stat counters */
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:600px;margin:0 auto 48px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.hero-stat{padding:24px 16px;text-align:center}
+.hero-stat+.hero-stat{border-left:1px solid rgba(255,255,255,0.1)}
+.hero-stat-value{font-family:var(--font-mono);font-size:28px;font-weight:500;color:#fff;line-height:1}
+@media(min-width:768px){.hero-stat-value{font-size:36px}}
+.hero-stat-label{font-family:var(--font-body);font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-top:8px}
 
 /* DASHBOARD WIDGET */
 .dash{background:var(--bg-white);border-radius:16px;max-width:460px;box-shadow:0 20px 60px rgba(0,30,50,0.25),0 0 0 1px rgba(255,255,255,0.1);position:relative;overflow:hidden}
@@ -381,108 +387,41 @@ html{scroll-behavior:auto}
 <a href="#demo" class="btn btn-primary" style="margin-top:16px;width:max-content">Book a Demo</a>
 </div>
 
-<section class="hero">
+<section class="hero glow-wrap">
 <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
 <source src="https://stokly.proudbrands.uk/images/warehouse-bg.webm" type="video/webm">
 </video>
 <div class="hero-overlay"></div>
 <div class="hero-grid"></div>
-<div class="container hero-inner">
-<div class="hero-content reveal">
+<div class="glow glow-magenta" style="top:20%;left:30%;opacity:0.15;width:600px;height:600px"></div>
+<div class="glow glow-blue" style="bottom:10%;right:20%;opacity:0.1;width:500px;height:500px"></div>
+<div class="container">
+<div class="hero-inner reveal">
 <p class="hero-eyebrow">Order Management &middot; Inventory &middot; Warehouse &middot; AI</p>
-<h1>You don&rsquo;t need a warehouse&nbsp;system.<br>You need <span class="grad-text-warm">operational&nbsp;control.</span></h1>
-<p class="hero-sub">Stok.ly gives retailers, wholesalers, and manufacturers one real-time stock truth across every channel, location, and system. Without the private equity price tag.</p>
+<h1>You don&rsquo;t need a<br>warehouse system.<br>You need <span class="grad-text-warm">operational control.</span></h1>
+<p class="hero-sub">One real-time stock truth across every channel, location, and system. Still independently owned. No private equity. No surprise price hikes.</p>
 <div class="hero-ctas">
 <a href="#demo" class="btn btn-primary">Book a 30-Minute Demo</a>
 <a href="#platform" class="hero-text-link">See How It Works <span>&rarr;</span></a>
 </div>
+<div class="hero-stats">
+<div class="hero-stat">
+<div class="hero-stat-value" data-target="300">0</div>
+<div class="hero-stat-label">Customers</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-value" data-target="290" data-suffix="+">0</div>
+<div class="hero-stat-label">Integrations</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-value" data-prefix="&pound;" data-target="299">0</div>
+<div class="hero-stat-label">From /month</div>
+</div>
+</div>
 <div class="trust-strip">
 <span>&#9733; 4.0 Trustpilot &middot; 42 reviews</span>
-<span>UK team &middot; 8am&ndash;8pm support</span>
-<span>300+ customers</span>
+<span>UK support team &middot; 8am&ndash;8pm</span>
 <span>Founded 2015</span>
-</div>
-</div>
-<div class="reveal" style="transition-delay:0.15s;position:relative">
-<div class="glow glow-magenta" style="top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.25;width:400px;height:400px"></div>
-<div class="dash">
-<div class="dash-chrome">
-<div class="dash-chrome-left">
-<div class="dash-chrome-dots"><span></span><span></span><span></span></div>
-<span class="dash-chrome-tab">app.stok.ly/operations</span>
-</div>
-<div class="dash-chrome-right">
-<div class="dash-chrome-avatar"></div>
-</div>
-</div>
-<div class="dash-body">
-<div class="dash-metrics">
-<div class="dash-metric">
-<div class="dash-metric-label">Orders</div>
-<div class="dash-metric-value" data-target="847">0</div>
-<span class="dash-metric-delta up">+12.3%</span>
-</div>
-<div class="dash-metric">
-<div class="dash-metric-label">Accuracy</div>
-<div class="dash-metric-value" data-target="99.7" data-suffix="%" data-decimals="1">0</div>
-<span class="dash-metric-delta up">+0.4%</span>
-</div>
-<div class="dash-metric">
-<div class="dash-metric-label">Shipped</div>
-<div class="dash-metric-value" data-target="2341">0</div>
-<span class="dash-metric-delta up">+8.1%</span>
-</div>
-</div>
-<div class="dash-chart">
-<div class="dash-chart-header">
-<span class="dash-chart-title">Orders (7 day)</span>
-<span class="dash-chart-period">This week</span>
-</div>
-<svg viewBox="0 0 400 80" aria-hidden="true">
-<defs>
-<linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#009BDE" stop-opacity="0.2"/><stop offset="100%" stop-color="#009BDE" stop-opacity="0"/></linearGradient>
-<linearGradient id="lg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#009BDE"/><stop offset="100%" stop-color="#EA1D76"/></linearGradient>
-</defs>
-<polyline points="0,65 57,55 114,58 171,35 228,40 285,22 342,18 400,8" fill="url(#cg)" stroke="none"/>
-<polyline points="0,65 57,55 114,58 171,35 228,40 285,22 342,18 400,8" fill="none" stroke="url(#lg)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="400" cy="8" r="4" fill="#EA1D76"/>
-<circle cx="400" cy="8" r="8" fill="none" stroke="#EA1D76" stroke-width="1" opacity="0.3"/>
-</svg>
-</div>
-<div class="dash-table">
-<div class="dash-table-header">
-<span>Order</span><span>Customer</span><span>Status</span><span>Items</span>
-</div>
-<div class="dash-table-row">
-<span class="order-id">#4821</span>
-<span class="order-customer">J. Richardson</span>
-<span><span class="dash-pill processing">Processing</span></span>
-<span class="order-items">6</span>
-</div>
-<div class="dash-table-row">
-<span class="order-id">#4820</span>
-<span class="order-customer">Smith &amp; Co Ltd</span>
-<span><span class="dash-pill packed">Packed</span></span>
-<span class="order-items">3</span>
-</div>
-<div class="dash-table-row">
-<span class="order-id">#4819</span>
-<span class="order-customer">Heritage Apparel</span>
-<span><span class="dash-pill shipped">Shipped</span></span>
-<span class="order-items">11</span>
-</div>
-<div class="dash-table-row">
-<span class="order-id">#4818</span>
-<span class="order-customer">Paving Superstore</span>
-<span><span class="dash-pill picked">Picked</span></span>
-<span class="order-items">24</span>
-</div>
-</div>
-<div class="dash-live">
-<span class="dash-live-dot"></span>
-<span class="dash-live-text">Live &middot; Warehouse 1 of 3 &middot; Last sync 4s ago</span>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -883,6 +822,7 @@ var els=document.querySelectorAll('[data-target]');
 els.forEach(function(el){
 var target=parseFloat(el.getAttribute('data-target'));
 var suffix=el.getAttribute('data-suffix')||'';
+var prefix=el.getAttribute('data-prefix')||'';
 var decimals=parseInt(el.getAttribute('data-decimals'))||0;
 var duration=1200;
 var start=performance.now();
@@ -890,8 +830,8 @@ function step(now){
 var progress=Math.min((now-start)/duration,1);
 var ease=1-Math.pow(1-progress,3);
 var current=target*ease;
-if(decimals>0){el.textContent=current.toFixed(decimals)+suffix}
-else{el.textContent=Math.floor(current).toLocaleString()+suffix}
+if(decimals>0){el.textContent=prefix+current.toFixed(decimals)+suffix}
+else{el.textContent=prefix+Math.floor(current).toLocaleString()+suffix}
 if(progress<1)requestAnimationFrame(step);
 }
 requestAnimationFrame(step);
