@@ -212,7 +212,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;letter-spacing:-0.02em;co
 .carousel-track-wrap{overflow:hidden;margin:0 -24px;padding:0 24px 12px;position:relative;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 24px,#000 calc(100% - 64px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 24px,#000 calc(100% - 64px),transparent 100%)}
 @media(min-width:768px){.carousel-track-wrap{margin:0 -40px;padding:0 40px 12px;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 40px,#000 calc(100% - 80px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 40px,#000 calc(100% - 80px),transparent 100%)}}
 .carousel-track{display:flex;gap:24px;transition:transform 0.6s cubic-bezier(0.16,1,0.3,1);will-change:transform}
-.f-card{flex-shrink:0;background:var(--white);border:1px solid var(--line-soft);border-radius:var(--radius-xl);padding:32px;display:flex;flex-direction:column;transition:all 0.5s cubic-bezier(0.16,1,0.3,1);width:320px;min-height:520px;position:relative;overflow:hidden}
+.f-card{flex-shrink:0;background:var(--white);border:1px solid var(--line-soft);border-radius:var(--radius-xl);padding:32px;display:flex;flex-direction:column;transition:background 0.3s,box-shadow 0.3s,border-color 0.3s;width:320px;min-height:520px;position:relative;overflow:hidden}
 .f-card.active{width:min(780px,calc(100vw - 80px));background:var(--white);box-shadow:var(--shadow-xl);border-color:transparent}
 .f-card.active::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
 .f-card[data-color="blue"].active::before{background:var(--blue)}
@@ -1079,7 +1079,6 @@ var progress=document.getElementById('carProgress');
 if(track&&prevBtn&&nextBtn){
 var cards=track.querySelectorAll('.f-card');
 var active=0;
-// Build progress dots
 cards.forEach(function(c,i){
 var dot=document.createElement('button');
 dot.className='carousel-dot'+(i===0?' active':'');
@@ -1088,32 +1087,46 @@ dot.addEventListener('click',function(){goTo(i)});
 progress.appendChild(dot);
 });
 var dots=progress.querySelectorAll('.carousel-dot');
-function updateCard(){
-cards.forEach(function(c,i){c.classList.toggle('active',i===active)});
-dots.forEach(function(d,i){d.classList.toggle('active',i===active)});
-// Scroll active card into view
+
+function scrollToActive(){
 var activeCard=cards[active];
-var trackRect=track.parentElement.getBoundingClientRect();
+if(!activeCard)return;
+var wrap=track.parentElement;
+var wrapRect=wrap.getBoundingClientRect();
 var cardRect=activeCard.getBoundingClientRect();
 var currentTransform=getComputedStyle(track).transform;
 var currentX=currentTransform==='none'?0:parseFloat(currentTransform.split(',')[4]||0);
-var targetX=currentX-(cardRect.left-trackRect.left)+24;
-// Clamp so we don't overscroll past end
+// Want active card's left at wrap's left + 24px padding
+var desiredLeft=wrapRect.left+24;
+var delta=desiredLeft-cardRect.left;
+var targetX=currentX+delta;
+// For index 0, anchor to 0
+if(active===0)targetX=0;
+// Clamp right
 var trackWidth=track.scrollWidth;
-var wrapWidth=track.parentElement.clientWidth;
-var maxScroll=-(trackWidth-wrapWidth+48);
-if(targetX<maxScroll)targetX=maxScroll;
-if(targetX>0)targetX=0;
+var wrapWidth=wrap.clientWidth;
+var maxLeftScroll=-(trackWidth-wrapWidth+48);
+if(targetX<maxLeftScroll)targetX=maxLeftScroll;
+if(targetX>0&&active===0)targetX=0;
 track.style.transform='translateX('+targetX+'px)';
+}
+
+function updateCard(){
+cards.forEach(function(c,i){c.classList.toggle('active',i===active)});
+dots.forEach(function(d,i){d.classList.toggle('active',i===active)});
 prevBtn.disabled=active===0;
 nextBtn.disabled=active===cards.length-1;
+// Wait for layout to reflect new active width, then scroll
+requestAnimationFrame(function(){requestAnimationFrame(scrollToActive)});
 }
+
 function goTo(i){
 if(i<0)i=0;
 if(i>=cards.length)i=cards.length-1;
 active=i;
 updateCard();
 }
+
 prevBtn.addEventListener('click',function(){goTo(active-1)});
 nextBtn.addEventListener('click',function(){goTo(active+1)});
 cards.forEach(function(c,i){
@@ -1121,9 +1134,12 @@ c.addEventListener('click',function(e){
 if(!c.classList.contains('active')&&!e.target.closest('button')){goTo(i)}
 });
 });
-// Init
-setTimeout(updateCard,100);
-window.addEventListener('resize',function(){updateCard()},{passive:true});
+
+// Init after layout + font load
+window.addEventListener('load',function(){setTimeout(updateCard,50)});
+setTimeout(updateCard,300);
+var rzt;
+window.addEventListener('resize',function(){clearTimeout(rzt);rzt=setTimeout(updateCard,150)},{passive:true});
 }
 })();
 </script>
