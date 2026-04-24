@@ -4,469 +4,428 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stok.ly | Operational Control for UK Retail &amp; Wholesale</title>
-<meta name="description" content="Stok.ly gives retailers, wholesalers, and manufacturers one real-time stock truth across every channel, location, and system. Still independently owned. From £299/mo.">
+<meta name="description" content="The UK warehouse management platform that hasn't been bought by private equity. From £299/mo.">
 <meta property="og:title" content="Stok.ly | Operational Control for UK Retail &amp; Wholesale">
-<meta property="og:description" content="One real-time stock truth across every channel, location, and system. Still independently owned.">
+<meta property="og:description" content="Still independently owned. One real-time stock truth across every channel, location, and system.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-/* Backgrounds - all light */
---bg-white:#FFFFFF;
---bg-light:#F5F7FA;
---bg-blue-tint:#E8F4FC;
---bg-navy:#003D5C;
---bg-navy-deep:#002B42;
-/* Brand colours */
+/* Canvas - warm off-whites */
+--cream:#F9F6F1;
+--cream-deep:#F3EEE5;
+--white:#FFFFFF;
+--paper:#FDFBF7;
+/* Ink */
+--ink:#0B1118;
+--ink-soft:#1F2937;
+--body:#4B5563;
+--muted:#6B7280;
+--line:#E5E0D6;
+--line-soft:#EFEAE0;
+/* Brand */
+--accent:#EA1D76;
+--accent-hover:#C41664;
 --blue:#009BDE;
---blue-hover:#0088C4;
---blue-dim:rgba(0,155,222,0.1);
---blue-border:rgba(0,155,222,0.25);
---magenta:#EA1D76;
---magenta-hover:#D01868;
---magenta-dim:rgba(234,29,118,0.08);
 --orange:#FF8300;
---orange-hover:#E57500;
---orange-dim:rgba(255,131,0,0.1);
-/* Text */
---text-primary:#0F1F2E;
---text-secondary:#3D5468;
---text-muted:#6B8299;
---text-on-dark:#EFF5FA;
---text-muted-on-dark:#8FAABB;
-/* Utility */
---red-alert:#E24B4A;
---border:#D8E3ED;
-/* Fonts */
---font-display:'Syne',sans-serif;--font-body:'IBM Plex Sans',sans-serif;--font-mono:'IBM Plex Mono',monospace;
+--navy:#0B1F33;
+/* System */
+--green:#0E8A5F;
+--radius:12px;
+--radius-lg:20px;
+--radius-xl:28px;
+--shadow-sm:0 1px 2px rgba(11,17,24,0.04),0 1px 3px rgba(11,17,24,0.06);
+--shadow:0 4px 12px rgba(11,17,24,0.06),0 2px 4px rgba(11,17,24,0.04);
+--shadow-lg:0 20px 50px rgba(11,17,24,0.08),0 8px 16px rgba(11,17,24,0.04);
+--shadow-xl:0 32px 80px rgba(11,17,24,0.12),0 12px 32px rgba(11,17,24,0.06);
+--display:'Fraunces',Georgia,serif;
+--sans:'Inter',-apple-system,sans-serif;
+--mono:'JetBrains Mono',Consolas,monospace;
+--ease:cubic-bezier(0.16,1,0.3,1);
 }
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--text-primary);background:var(--bg-white);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
-img,svg{display:block;max-width:100%}
+body{font-family:var(--sans);font-size:16px;line-height:1.55;color:var(--ink);background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-feature-settings:"ss01","cv11"}
+img,svg,video{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 ul{list-style:none}
-.container{width:100%;max-width:1200px;margin:0 auto;padding:0 24px}
-h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15}
+h1,h2,h3,h4{font-family:var(--display);font-weight:600;letter-spacing:-0.02em;color:var(--ink);font-variation-settings:"opsz" 144,"SOFT" 30}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.section-label{font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;text-align:center}
 
-/* Gradient text */
-.grad-text{background:linear-gradient(135deg,var(--blue) 0%,var(--magenta) 50%,var(--orange) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.grad-text-warm{background:linear-gradient(135deg,var(--magenta) 0%,var(--orange) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.grad-text-cool{background:linear-gradient(135deg,var(--blue) 0%,var(--magenta) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.container{width:100%;max-width:1280px;margin:0 auto;padding:0 24px}
+@media(min-width:768px){.container{padding:0 40px}}
 
-/* Background glows */
-.glow-wrap{position:relative;overflow:hidden}
-.glow{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;opacity:0.12}
-.glow-blue{background:var(--blue);width:600px;height:600px}
-.glow-magenta{background:var(--magenta);width:500px;height:500px}
-.glow-orange{background:var(--orange);width:400px;height:400px}
+/* ─── BUTTONS ─── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--sans);font-weight:600;font-size:15px;border-radius:999px;border:1.5px solid transparent;cursor:pointer;transition:all 0.25s var(--ease);text-decoration:none;white-space:nowrap;padding:0 24px;height:48px}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.btn-primary:hover{background:var(--accent-hover);border-color:var(--accent-hover);transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn-dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-dark:hover{background:#1a2533;border-color:#1a2533;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--ink);background:var(--cream-deep)}
+.btn-light{background:var(--white);color:var(--ink);border-color:var(--white)}
+.btn-light:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn-sm{height:40px;font-size:14px;padding:0 18px}
+.btn-lg{height:56px;font-size:16px;padding:0 32px}
+.btn-arrow{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:15px;color:var(--ink);transition:gap 0.25s var(--ease)}
+.btn-arrow:hover{gap:10px;color:var(--accent)}
 
-/* Warm card hover glow */
-.card-glow{transition:all 0.3s ease;position:relative}
-.card-glow::after{content:'';position:absolute;inset:-1px;border-radius:inherit;background:linear-gradient(135deg,var(--blue),var(--magenta),var(--orange));opacity:0;z-index:-1;transition:opacity 0.3s ease;filter:blur(8px)}
-.card-glow:hover::after{opacity:0.15}
-
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-display);font-weight:600;border-radius:8px;border:2px solid transparent;cursor:pointer;transition:all 0.25s cubic-bezier(0.16,1,0.3,1);text-decoration:none;white-space:nowrap}
-.btn:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
-.btn-primary{background:var(--magenta);color:#fff;border-color:var(--magenta);font-size:16px;height:48px;padding:0 28px}
-.btn-primary:hover{background:var(--magenta-hover);border-color:var(--magenta-hover);transform:translateY(-1px)}
-.btn-sm{font-size:14px;height:36px;padding:0 16px}
-.btn-ghost{background:transparent;color:var(--blue);border-color:var(--blue);font-size:16px;height:48px;padding:0 28px}
-.btn-ghost:hover{background:var(--blue-dim);transform:translateY(-1px)}
-.btn-ghost-dark{background:transparent;color:#fff;border-color:rgba(255,255,255,0.3);font-size:16px;height:48px;padding:0 28px}
-.btn-ghost-dark:hover{border-color:#fff;background:rgba(255,255,255,0.1)}
-
-/* NAV */
-.site-nav{position:sticky;top:0;z-index:100;background:var(--bg-white);height:64px;transition:all 0.3s ease;border-bottom:1px solid var(--border)}
-.site-nav.scrolled{background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 2px 12px rgba(0,61,92,0.08)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
-.nav-wordmark{display:flex;align-items:center}
+/* ─── NAV ─── */
+.nav{position:sticky;top:0;z-index:100;background:rgba(249,246,241,0.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color 0.25s,background 0.25s}
+.nav.scrolled{border-bottom-color:var(--line);background:rgba(249,246,241,0.95)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
 .nav-logo{height:36px;width:auto}
 .nav-links{display:none;align-items:center;gap:32px}
-.nav-links a{font-family:var(--font-body);font-size:14px;font-weight:500;color:var(--text-secondary);transition:color 0.2s}
-.nav-links a:hover{color:var(--text-primary)}
-.nav-right{display:flex;align-items:center;gap:16px}
-.nav-signin{font-size:14px;font-weight:500;color:var(--text-secondary);display:none}
-.nav-signin:hover{color:var(--text-primary)}
-.nav-toggle{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
-.nav-toggle span{display:block;width:22px;height:2px;background:var(--text-primary);border-radius:1px;transition:all 0.25s ease}
+.nav-links a{font-size:14px;font-weight:500;color:var(--ink-soft);transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-signin{display:none;font-size:14px;font-weight:500;color:var(--ink-soft)}
+.nav-signin:hover{color:var(--ink)}
+.nav-toggle{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-right:-8px}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);border-radius:1px;transition:all 0.25s}
 .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
 .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--bg-white);z-index:99;padding:48px 24px;flex-direction:column;gap:24px;border-top:1px solid var(--border)}
+.mobile-nav{display:none;position:fixed;top:72px;left:0;right:0;bottom:0;background:var(--cream);z-index:99;padding:48px 24px;flex-direction:column;gap:24px}
 .mobile-nav.is-open{display:flex}
-.mobile-nav a{font-family:var(--font-display);font-size:24px;font-weight:600;color:var(--text-primary)}
-@media(min-width:1024px){
-.nav-links{display:flex}
-.nav-signin{display:block}
-.nav-toggle{display:none}
-}
+.mobile-nav a{font-family:var(--display);font-size:28px;font-weight:600;color:var(--ink)}
+@media(min-width:1024px){.nav-links{display:flex}.nav-signin{display:inline}.nav-toggle{display:none}}
 
-/* HERO */
-.hero{position:relative;min-height:100vh;background:var(--bg-navy);overflow:hidden;display:flex;align-items:center;padding:120px 0 140px}
-.hero-curve{position:absolute;bottom:-1px;left:0;width:100%;height:80px;z-index:3;display:block}
-.hero-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.35}
-.hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(0,43,66,0.9) 0%,rgba(0,61,92,0.7) 40%,rgba(0,61,92,0.85) 100%)}
-.hero-grid{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(0,155,222,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,155,222,0.04) 1px,transparent 1px);background-size:60px 60px}
-.hero-inner{position:relative;z-index:2;text-align:center;max-width:800px;margin:0 auto}
-.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:24px}
-.hero h1{font-family:var(--font-display);font-weight:700;font-size:36px;color:#fff;line-height:1.08;margin-bottom:28px}
-@media(min-width:768px){.hero h1{font-size:56px}}
-@media(min-width:1024px){.hero h1{font-size:72px}}
-.hero-sub{font-size:17px;color:rgba(255,255,255,0.65);max-width:560px;margin:0 auto 36px;line-height:1.65}
+/* ─── HERO ─── */
+.hero{padding:80px 0 40px;background:var(--cream);position:relative;overflow:hidden}
+@media(min-width:1024px){.hero{padding:120px 0 60px}}
+.hero-inner{display:grid;gap:48px;align-items:center}
+@media(min-width:1024px){.hero-inner{grid-template-columns:1.05fr 0.95fr;gap:80px}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 10px;background:var(--white);border:1px solid var(--line);border-radius:999px;font-size:13px;font-weight:500;color:var(--ink-soft);margin-bottom:28px;box-shadow:var(--shadow-sm)}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(14,138,95,0.5)}50%{box-shadow:0 0 0 6px rgba(14,138,95,0)}}
+.hero h1{font-family:var(--display);font-weight:500;font-size:48px;line-height:0.95;letter-spacing:-0.035em;margin-bottom:28px;color:var(--ink);font-variation-settings:"opsz" 144,"SOFT" 50}
+@media(min-width:768px){.hero h1{font-size:72px}}
+@media(min-width:1024px){.hero h1{font-size:88px}}
+.hero h1 em{font-style:italic;color:var(--accent);font-variation-settings:"opsz" 144,"SOFT" 100}
+.hero-sub{font-size:18px;line-height:1.55;color:var(--body);max-width:520px;margin-bottom:36px}
 @media(min-width:768px){.hero-sub{font-size:20px}}
-.hero-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-bottom:48px}
-.hero-text-link{font-family:var(--font-display);font-weight:600;font-size:16px;color:#fff;display:inline-flex;align-items:center;gap:6px;transition:gap 0.2s}
-.hero-text-link:hover{gap:10px}
-.trust-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;font-size:13px;color:rgba(255,255,255,0.4)}
-.trust-strip span{display:flex;align-items:center;gap:4px;white-space:nowrap}
-/* Hero stat counters */
-.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:600px;margin:0 auto 48px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.hero-stat{padding:24px 16px;text-align:center}
-.hero-stat+.hero-stat{border-left:1px solid rgba(255,255,255,0.1)}
-.hero-stat-value{font-family:var(--font-mono);font-size:28px;font-weight:500;color:#fff;line-height:1}
-@media(min-width:768px){.hero-stat-value{font-size:36px}}
-.hero-stat-label{font-family:var(--font-body);font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-top:8px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:36px}
+.hero-trust{display:flex;flex-wrap:wrap;gap:24px;font-size:13px;color:var(--muted);align-items:center}
+.hero-trust-item{display:flex;align-items:center;gap:6px}
+.hero-trust strong{color:var(--ink);font-weight:600}
+/* Hero visual */
+.hero-visual{position:relative;aspect-ratio:4/5;max-width:560px;margin:0 auto}
+@media(min-width:1024px){.hero-visual{margin:0 0 0 auto}}
+.hero-image-frame{position:relative;width:100%;height:100%;border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-xl)}
+.hero-image-frame img{width:100%;height:100%;object-fit:cover}
+.hero-image-frame video{width:100%;height:100%;object-fit:cover}
+/* Floating stat cards on hero */
+.hero-stat-card{position:absolute;background:var(--white);border-radius:var(--radius);padding:14px 18px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:12px}
+.hero-stat-card.top{top:24px;left:-24px}
+.hero-stat-card.bot{bottom:40px;right:-32px}
+.hero-stat-icon{width:36px;height:36px;border-radius:10px;background:var(--cream);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hero-stat-card.top .hero-stat-icon{background:rgba(234,29,118,0.1);color:var(--accent)}
+.hero-stat-card.bot .hero-stat-icon{background:rgba(0,155,222,0.1);color:var(--blue)}
+.hero-stat-text{display:flex;flex-direction:column;line-height:1.2}
+.hero-stat-value{font-family:var(--mono);font-size:16px;font-weight:500;color:var(--ink)}
+.hero-stat-label{font-size:11px;color:var(--muted);margin-top:2px}
+@media(max-width:767px){.hero-stat-card.top{left:-8px}.hero-stat-card.bot{right:-8px}}
 
-/* DASHBOARD WIDGET */
-.dash{background:var(--bg-white);border-radius:16px;max-width:460px;box-shadow:0 20px 60px rgba(0,30,50,0.25),0 0 0 1px rgba(255,255,255,0.1);position:relative;overflow:hidden}
-.dash::before{content:'';position:absolute;inset:-2px;border-radius:18px;background:linear-gradient(135deg,var(--blue),var(--magenta),var(--orange));z-index:-1;opacity:0.5}
-@media(min-width:1024px){.dash{margin-left:auto}}
-/* Dashboard chrome bar */
-.dash-chrome{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#0F1F2E;border-bottom:1px solid rgba(255,255,255,0.08)}
-.dash-chrome-left{display:flex;align-items:center;gap:8px}
-.dash-chrome-dots{display:flex;gap:5px}
-.dash-chrome-dots span{width:8px;height:8px;border-radius:50%}
-.dash-chrome-dots span:nth-child(1){background:#E24B4A}
-.dash-chrome-dots span:nth-child(2){background:#FF8300}
-.dash-chrome-dots span:nth-child(3){background:#1D9E75}
-.dash-chrome-tab{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.08);padding:3px 12px;border-radius:4px}
-.dash-chrome-right{display:flex;align-items:center;gap:6px}
-.dash-chrome-avatar{width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--magenta))}
-/* Dashboard body */
-.dash-body{padding:0}
-/* Metric cards row */
-.dash-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
-.dash-metric{padding:16px;text-align:center;border-bottom:1px solid var(--border);position:relative}
-.dash-metric+.dash-metric{border-left:1px solid var(--border)}
-.dash-metric-label{font-family:var(--font-body);font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px}
-.dash-metric-value{font-family:var(--font-mono);font-size:22px;font-weight:500;color:var(--text-primary);line-height:1}
-.dash-metric-delta{font-family:var(--font-mono);font-size:10px;margin-top:4px;display:inline-block;padding:1px 6px;border-radius:8px}
-.dash-metric-delta.up{background:rgba(29,158,117,0.1);color:#1D9E75}
-/* Sparkline chart area */
-.dash-chart{padding:12px 16px;border-bottom:1px solid var(--border);background:var(--bg-light)}
-.dash-chart-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.dash-chart-title{font-family:var(--font-body);font-size:11px;font-weight:600;color:var(--text-secondary)}
-.dash-chart-period{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);background:var(--bg-white);padding:2px 8px;border-radius:4px;border:1px solid var(--border)}
-.dash-chart svg{width:100%;height:auto}
-/* Order table */
-.dash-table{padding:0}
-.dash-table-header{display:grid;grid-template-columns:80px 1fr 80px 60px;padding:8px 16px;font-family:var(--font-body);font-size:10px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;background:var(--bg-light);border-bottom:1px solid var(--border)}
-.dash-table-row{display:grid;grid-template-columns:80px 1fr 80px 60px;padding:10px 16px;align-items:center;border-bottom:1px solid var(--border);transition:background 0.15s}
-.dash-table-row:last-child{border-bottom:none}
-.dash-table-row:hover{background:var(--bg-light)}
-.dash-table-row .order-id{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--text-primary)}
-.dash-table-row .order-customer{font-size:13px;color:var(--text-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.dash-table-row .order-items{font-family:var(--font-mono);font-size:12px;color:var(--text-muted);text-align:right}
-.dash-pill{font-size:9px;font-weight:600;padding:3px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:0.04em;text-align:center}
-.dash-pill.picked{background:var(--orange-dim);color:var(--orange)}
-.dash-pill.packed{background:var(--blue-dim);color:var(--blue)}
-.dash-pill.shipped{background:var(--magenta-dim);color:var(--magenta)}
-.dash-pill.processing{background:rgba(29,158,117,0.1);color:#1D9E75}
-/* Live indicator */
-.dash-live{display:flex;align-items:center;gap:6px;padding:10px 16px;background:var(--bg-light);border-top:1px solid var(--border)}
-.dash-live-dot{width:6px;height:6px;border-radius:50%;background:#1D9E75;animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(29,158,117,0.4)}50%{box-shadow:0 0 0 4px rgba(29,158,117,0)}}
-.dash-live-text{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:0.04em}
+/* ─── LOGO BAR ─── */
+.logos{padding:64px 0 32px;background:var(--cream)}
+.logos-label{text-align:center;font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0.04em;margin-bottom:32px}
+.logos-row{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:40px}
+@media(min-width:768px){.logos-row{gap:56px}}
+.logos-row img{height:22px;width:auto;object-fit:contain;filter:grayscale(1) opacity(0.55);mix-blend-mode:multiply;transition:filter 0.25s}
+.logos-row img:hover{filter:grayscale(0) opacity(1)}
+@media(min-width:768px){.logos-row img{height:28px}}
 
-/* (section transitions removed, curve built into hero) */
+/* ─── STAT BAND ─── */
+.stats{padding:80px 0;background:var(--ink);color:#fff;border-radius:var(--radius-xl);margin:40px 24px;position:relative;overflow:hidden}
+@media(min-width:768px){.stats{margin:60px 40px;padding:120px 0}}
+.stats-grid{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:768px){.stats-grid{grid-template-columns:repeat(3,1fr);gap:24px}}
+.stat{text-align:left;padding:0 24px}
+@media(min-width:768px){.stat{padding:0 40px}}
+.stat-num{font-family:var(--display);font-size:64px;font-weight:500;line-height:1;letter-spacing:-0.04em;color:#fff;margin-bottom:12px}
+@media(min-width:768px){.stat-num{font-size:88px}}
+.stat-num em{font-style:italic;color:var(--accent)}
+.stat-text{font-size:15px;color:rgba(255,255,255,0.7);line-height:1.55;max-width:280px}
 
-/* LOGO BAR */
-.logo-bar{background:var(--bg-white);padding:80px 0 60px}
-.logo-bar-label{text-align:center;font-size:13px;font-weight:400;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:32px}
-.logo-bar-row{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:32px}
-@media(min-width:768px){.logo-bar-row{gap:48px}}
-.logo-bar-row img{height:24px;width:auto;object-fit:contain;filter:grayscale(1) opacity(0.5);mix-blend-mode:multiply;transition:filter 0.2s}
-.logo-bar-row img:hover{filter:grayscale(0) opacity(1)}
-@media(min-width:768px){.logo-bar-row img{height:32px}}
+/* ─── SECTION BASE ─── */
+.section{padding:96px 0}
+@media(min-width:768px){.section{padding:140px 0}}
+.section-cream{background:var(--cream)}
+.section-paper{background:var(--paper)}
+.section-white{background:var(--white)}
+.section-ink{background:var(--ink);color:#fff}
+.section-ink h2,.section-ink h3{color:#fff}
+.eyebrow{display:inline-block;font-size:13px;font-weight:500;color:var(--accent);margin-bottom:16px;letter-spacing:0.02em}
+.section-ink .eyebrow{color:var(--accent)}
+.section-header{max-width:720px;margin:0 auto 64px;text-align:center}
+.section-header h2{font-family:var(--display);font-weight:500;font-size:40px;line-height:1.05;letter-spacing:-0.03em;margin-bottom:20px;font-variation-settings:"opsz" 144,"SOFT" 50}
+@media(min-width:768px){.section-header h2{font-size:56px}}
+.section-header h2 em{font-style:italic;color:var(--accent);font-variation-settings:"opsz" 144,"SOFT" 100}
+.section-ink .section-header h2 em{color:var(--accent)}
+.section-sub{font-size:18px;line-height:1.55;color:var(--body);max-width:580px;margin:0 auto}
+.section-ink .section-sub{color:rgba(255,255,255,0.7)}
 
-/* PAIN SECTION */
-.reality{background:var(--bg-light);padding:120px 0}
-@media(max-width:767px){.reality{padding:70px 0}}
-.reality-inner{max-width:720px;margin:0 auto}
-.reality h2{font-size:32px;color:var(--text-primary);margin-bottom:48px;text-align:center}
-@media(min-width:768px){.reality h2{font-size:48px}}
-.reality-line{display:flex;align-items:flex-start;gap:20px;margin-bottom:40px;position:relative}
-.reality-line::before{content:'';position:absolute;left:15px;top:40px;bottom:-40px;width:2px;background:linear-gradient(to bottom,var(--blue),var(--magenta))}
-.reality-line:last-of-type::before{display:none}
-.reality-marker{flex-shrink:0;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:13px;font-weight:600;color:#fff;position:relative;z-index:1}
-.reality-marker.m1{background:var(--blue)}
-.reality-marker.m2{background:var(--magenta)}
-.reality-marker.m3{background:var(--orange)}
-.reality-copy h3{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text-primary);margin-bottom:6px}
-.reality-copy p{font-size:16px;color:var(--text-secondary);line-height:1.65}
-.reality-copy .highlight{font-weight:600;color:var(--text-primary)}
-.reality-kicker{text-align:center;margin-top:56px;padding-top:40px;border-top:1px solid var(--border)}
-.reality-kicker p{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--text-primary);max-width:560px;margin:0 auto;line-height:1.4}
-@media(min-width:768px){.reality-kicker p{font-size:26px}}
+/* ─── REALITY TIMELINE ─── */
+.reality-wrap{max-width:760px;margin:0 auto}
+.reality-item{display:flex;gap:28px;padding:32px 0;border-top:1px solid var(--line-soft)}
+.reality-item:first-of-type{border-top:none;padding-top:0}
+.reality-step{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--muted);letter-spacing:0.08em;flex-shrink:0;width:40px;padding-top:6px}
+.reality-body h3{font-family:var(--display);font-size:24px;font-weight:600;line-height:1.2;margin-bottom:10px;color:var(--ink)}
+@media(min-width:768px){.reality-body h3{font-size:28px}}
+.reality-body p{font-size:17px;line-height:1.6;color:var(--body)}
+.reality-body p strong{color:var(--ink);font-weight:600}
+.reality-kicker{text-align:center;margin-top:64px;padding-top:48px;border-top:1px solid var(--line-soft)}
+.reality-kicker p{font-family:var(--display);font-size:24px;font-weight:500;line-height:1.3;color:var(--ink);max-width:600px;margin:0 auto;font-variation-settings:"opsz" 144,"SOFT" 50}
+@media(min-width:768px){.reality-kicker p{font-size:32px}}
+.reality-kicker em{font-style:italic;color:var(--accent)}
 
-/* INDEPENDENCE */
-.independence{background:var(--bg-navy);padding:120px 0;text-align:center}
-@media(max-width:767px){.independence{padding:80px 0}}
-.indie-pill{display:inline-block;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);border:1px solid var(--blue-border);border-radius:20px;padding:4px 14px;margin-bottom:24px}
-.independence h2{font-family:var(--font-display);font-weight:700;font-size:30px;color:var(--text-on-dark);line-height:1.15;max-width:760px;margin:0 auto 32px}
-.independence .grad-text{background:linear-gradient(135deg,var(--blue) 0%,var(--magenta) 40%,var(--orange) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-@media(min-width:768px){.independence h2{font-size:48px}}
-.indie-body{font-size:17px;color:var(--text-muted-on-dark);line-height:1.7;max-width:700px;margin:0 auto 48px;text-align:left}
-.indie-body p+p{margin-top:20px}
-.indie-stats{display:grid;gap:24px;max-width:700px;margin:0 auto}
-@media(min-width:768px){.indie-stats{grid-template-columns:repeat(3,1fr);gap:0}}
-.indie-stat{padding:20px;text-align:center}
-@media(min-width:768px){.indie-stat+.indie-stat{border-left:1px solid var(--blue-border)}}
-.indie-stat-value{font-family:var(--font-mono);font-size:28px;font-weight:500;color:var(--orange);margin-bottom:4px}
-.indie-stat-label{font-size:13px;color:var(--text-muted-on-dark)}
+/* ─── INDEPENDENCE ─── */
+.indie-card{background:var(--ink);color:#fff;border-radius:var(--radius-xl);padding:64px 40px;text-align:center;position:relative;overflow:hidden}
+@media(min-width:768px){.indie-card{padding:96px 64px}}
+.indie-badge{display:inline-block;padding:6px 14px;background:rgba(234,29,118,0.15);color:var(--accent);border-radius:999px;font-size:12px;font-weight:600;letter-spacing:0.04em;margin-bottom:24px}
+.indie-card h2{font-family:var(--display);font-weight:500;font-size:36px;line-height:1.1;letter-spacing:-0.03em;color:#fff;max-width:820px;margin:0 auto 32px;font-variation-settings:"opsz" 144,"SOFT" 50}
+@media(min-width:768px){.indie-card h2{font-size:56px}}
+.indie-card h2 em{font-style:italic;color:var(--accent)}
+.indie-card p{font-size:17px;line-height:1.65;color:rgba(255,255,255,0.75);max-width:680px;margin:0 auto 20px;text-align:left}
+@media(min-width:768px){.indie-card p{text-align:center}}
+.indie-stats{display:grid;grid-template-columns:1fr;gap:24px;max-width:720px;margin:56px auto 0;padding-top:48px;border-top:1px solid rgba(255,255,255,0.1)}
+@media(min-width:768px){.indie-stats{grid-template-columns:repeat(3,1fr)}}
+.indie-stat{text-align:center}
+.indie-stat-value{font-family:var(--display);font-size:32px;font-weight:500;color:#fff;margin-bottom:6px;font-variation-settings:"opsz" 144}
+.indie-stat-value em{font-style:italic;color:var(--accent)}
+.indie-stat-label{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.4}
 
-/* PLATFORM TABS */
-.platform{background:var(--bg-white);padding:120px 0}
-@media(max-width:767px){.platform{padding:70px 0}}
-.platform>div>h2{font-size:28px;color:var(--text-primary);margin-bottom:12px;text-align:center}
-@media(min-width:768px){.platform>div>h2{font-size:48px}}
-.platform-sub{font-size:17px;color:var(--text-muted);max-width:560px;margin:0 auto 56px;text-align:center}
-/* Tab buttons */
-.pillar-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:48px;flex-wrap:wrap}
-.pillar-tab{font-family:var(--font-display);font-size:14px;font-weight:600;padding:10px 20px;border-radius:40px;border:2px solid var(--border);background:var(--bg-white);color:var(--text-secondary);cursor:pointer;transition:all 0.25s cubic-bezier(0.16,1,0.3,1);position:relative;overflow:hidden}
-.pillar-tab:hover{border-color:var(--blue);color:var(--text-primary)}
-.pillar-tab.active{color:#fff;border-color:transparent}
-.pillar-tab[data-color="blue"].active{background:var(--blue)}
-.pillar-tab[data-color="magenta"].active{background:var(--magenta)}
-.pillar-tab[data-color="orange"].active{background:var(--orange)}
-.pillar-tab[data-color="navy"].active{background:var(--bg-navy)}
-@media(min-width:768px){.pillar-tab{font-size:15px;padding:12px 28px}}
-/* Tab panels */
-.pillar-panels{position:relative;min-height:400px}
-.pillar-panel{display:none;animation:panelIn 0.4s cubic-bezier(0.16,1,0.3,1)}
-.pillar-panel.active{display:block}
-@keyframes panelIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-/* Panel layout */
-.panel-inner{display:grid;gap:40px;align-items:center}
-@media(min-width:1024px){.panel-inner{grid-template-columns:1fr 1fr;gap:64px}}
-.panel-copy{}
-.panel-number{font-family:var(--font-mono);font-size:64px;font-weight:500;line-height:1;margin-bottom:8px}
-@media(min-width:768px){.panel-number{font-size:80px}}
-.panel-number.c-blue{color:var(--blue)}
-.panel-number.c-magenta{color:var(--magenta)}
-.panel-number.c-orange{color:var(--orange)}
-.panel-number.c-navy{color:var(--bg-navy)}
-.panel-number-label{font-family:var(--font-body);font-size:13px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:24px}
-.panel-copy h3{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--text-primary);margin-bottom:12px;line-height:1.2}
-@media(min-width:768px){.panel-copy h3{font-size:32px}}
-.panel-copy>p{font-size:16px;color:var(--text-secondary);line-height:1.65;margin-bottom:24px}
-.panel-features{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:767px){.panel-features{grid-template-columns:1fr}}
-.panel-feat{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-primary);line-height:1.45}
-.panel-feat-dot{flex-shrink:0;width:8px;height:8px;border-radius:50%;margin-top:5px}
-.panel-feat-dot.d-blue{background:var(--blue)}
-.panel-feat-dot.d-magenta{background:var(--magenta)}
-.panel-feat-dot.d-orange{background:var(--orange)}
-.panel-feat-dot.d-navy{background:var(--bg-navy)}
-/* Panel visual (mini UI mock) */
-.panel-visual{position:relative}
-.panel-mock{background:var(--bg-light);border-radius:16px;border:1px solid var(--border);overflow:hidden;box-shadow:0 8px 30px rgba(0,61,92,0.06)}
-.panel-mock-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:var(--bg-white);border-bottom:1px solid var(--border)}
-.panel-mock-dot{width:7px;height:7px;border-radius:50%;background:var(--border)}
-.panel-mock-body{padding:20px;display:flex;flex-direction:column;gap:12px;min-height:240px}
-/* Mock UI elements */
-.mock-row{display:flex;gap:10px;align-items:center}
-.mock-block{border-radius:6px;height:36px;flex:1}
-.mock-block-sm{border-radius:4px;height:12px}
-.mock-block-md{border-radius:6px;height:24px}
-.mock-pill{border-radius:20px;height:24px;width:60px}
-.mock-sidebar{width:48px;background:var(--bg-navy);border-radius:8px;display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 0}
-.mock-sidebar-item{width:24px;height:24px;border-radius:6px;background:rgba(255,255,255,0.1)}
-.mock-sidebar-item.active{background:var(--blue)}
-.mock-table{width:100%;border-collapse:collapse}
-.mock-table-row{display:flex;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);align-items:center}
-.mock-table-row:last-child{border-bottom:none}
-.mock-chart-bar{border-radius:4px 4px 0 0;width:100%}
+/* ─── FEATURE BLOCK (alternating) ─── */
+.feature{padding:80px 0;border-top:1px solid var(--line-soft)}
+.feature:first-of-type{border-top:none}
+@media(min-width:768px){.feature{padding:120px 0}}
+.feature-inner{display:grid;gap:48px;align-items:center}
+@media(min-width:1024px){.feature-inner{grid-template-columns:1fr 1fr;gap:80px}}
+.feature.reverse .feature-inner{direction:rtl}
+.feature.reverse .feature-copy,.feature.reverse .feature-visual{direction:ltr}
+.feature-tag{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--muted);margin-bottom:20px;padding:4px 12px 4px 10px;background:var(--white);border:1px solid var(--line);border-radius:999px}
+.feature-tag-dot{width:6px;height:6px;border-radius:50%}
+.feature-tag-dot.blue{background:var(--blue)}
+.feature-tag-dot.magenta{background:var(--accent)}
+.feature-tag-dot.orange{background:var(--orange)}
+.feature-tag-dot.navy{background:var(--navy)}
+.feature h2{font-family:var(--display);font-size:36px;font-weight:500;line-height:1.1;letter-spacing:-0.03em;margin-bottom:20px;font-variation-settings:"opsz" 144,"SOFT" 50}
+@media(min-width:768px){.feature h2{font-size:48px}}
+.feature h2 em{font-style:italic;color:var(--accent)}
+.feature-desc{font-size:17px;line-height:1.6;color:var(--body);margin-bottom:28px;max-width:520px}
+.feature-list{display:flex;flex-direction:column;gap:14px;margin-bottom:32px}
+.feature-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--ink-soft);line-height:1.5}
+.feature-check{flex-shrink:0;width:20px;height:20px;border-radius:50%;background:var(--cream-deep);display:flex;align-items:center;justify-content:center;margin-top:2px;color:var(--accent)}
+/* Feature visual: browser mock */
+.browser-mock{background:var(--white);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--line-soft)}
+.browser-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:var(--cream-deep);border-bottom:1px solid var(--line-soft)}
+.browser-dots{display:flex;gap:6px}
+.browser-dots span{width:10px;height:10px;border-radius:50%}
+.browser-dots span:nth-child(1){background:#FF5F57}
+.browser-dots span:nth-child(2){background:#FEBC2E}
+.browser-dots span:nth-child(3){background:#28C840}
+.browser-url{font-family:var(--mono);font-size:11px;color:var(--muted);background:var(--white);padding:4px 12px;border-radius:6px;margin-left:auto;margin-right:auto;border:1px solid var(--line-soft)}
+.browser-body{padding:0;min-height:320px;background:var(--white)}
 
-/* INTEGRATIONS */
-.integrations{background:var(--bg-light);padding:80px 0}
-@media(max-width:767px){.integrations{padding:60px 0}}
-.integrations h2{font-size:28px;color:var(--text-primary);margin-bottom:40px}
-@media(min-width:768px){.integrations h2{font-size:36px}}
-.int-grid{display:grid;gap:20px}
-@media(min-width:768px){.int-grid{grid-template-columns:repeat(3,1fr)}}
-.int-group{background:var(--bg-white);border-radius:16px;padding:32px;position:relative;overflow:hidden;transition:all 0.3s cubic-bezier(0.16,1,0.3,1)}
-.int-group::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--magenta),var(--orange))}
-.int-group:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,61,92,0.08)}
-.int-count{font-family:var(--font-mono);font-size:48px;font-weight:500;color:var(--orange);line-height:1;margin-bottom:4px}
-.int-group h3{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px}
-.int-logos{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:12px}
-.int-logos img{height:28px;width:auto;object-fit:contain;filter:grayscale(1) opacity(0.6);transition:filter 0.2s}
-.int-logos img:hover{filter:grayscale(0) opacity(1)}
-.int-more{font-size:12px;color:var(--text-muted);font-style:italic}
-.int-cta{text-align:center;margin-top:32px}
+/* ─── CUSTOMER STORY ─── */
+.story{background:var(--paper);padding:96px 0}
+@media(min-width:768px){.story{padding:140px 0}}
+.story-inner{display:grid;gap:48px;align-items:center}
+@media(min-width:1024px){.story-inner{grid-template-columns:0.9fr 1.1fr;gap:80px}}
+.story-image{position:relative;border-radius:var(--radius-xl);overflow:hidden;aspect-ratio:4/5;max-width:480px}
+.story-image img{width:100%;height:100%;object-fit:cover}
+.story-image-overlay{position:absolute;bottom:24px;left:24px;right:24px;background:var(--white);padding:20px 24px;border-radius:var(--radius);box-shadow:var(--shadow-lg)}
+.story-image-overlay-name{font-family:var(--display);font-size:18px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.story-image-overlay-role{font-size:13px;color:var(--muted)}
+.story-copy .eyebrow{margin-bottom:20px}
+.story-quote{font-family:var(--display);font-size:28px;font-weight:500;line-height:1.25;letter-spacing:-0.02em;color:var(--ink);margin-bottom:32px;font-variation-settings:"opsz" 144,"SOFT" 50}
+@media(min-width:768px){.story-quote{font-size:40px}}
+.story-quote::before{content:'\201C';color:var(--accent);margin-right:2px}
+.story-quote::after{content:'\201D';color:var(--accent)}
+.story-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;padding-top:32px;border-top:1px solid var(--line-soft)}
+.story-metric-value{font-family:var(--display);font-size:40px;font-weight:500;color:var(--accent);line-height:1;margin-bottom:6px}
+.story-metric-label{font-size:13px;color:var(--body);line-height:1.4}
 
-/* PROOF */
-.proof{background:var(--bg-white);padding:120px 0}
-@media(max-width:767px){.proof{padding:70px 0}}
-.proof h2{font-size:28px;color:var(--text-primary);margin-bottom:48px;text-align:center}
-@media(min-width:768px){.proof h2{font-size:42px}}
-.proof-hero-quote{max-width:800px;margin:0 auto 48px;text-align:center;position:relative;padding:48px 0}
-.proof-hero-quote::before{content:'\201C';position:absolute;top:0;left:50%;transform:translateX(-50%);font-family:var(--font-display);font-size:120px;color:var(--magenta);opacity:0.12;line-height:1}
-.proof-hero-quote blockquote{font-family:var(--font-display);font-size:24px;font-weight:600;color:var(--text-primary);line-height:1.4;margin-bottom:20px}
-@media(min-width:768px){.proof-hero-quote blockquote{font-size:32px}}
-.proof-hero-quote cite{font-style:normal;font-size:14px;color:var(--text-muted);display:block}
-.proof-grid{display:grid;gap:20px}
-@media(min-width:768px){.proof-grid{grid-template-columns:1fr 1fr}}
-@media(min-width:1024px){.proof-grid{grid-template-columns:1fr 1fr 1fr}}
-.quote-card{background:var(--bg-light);border:none;border-radius:16px;padding:28px;position:relative;overflow:hidden}
-.quote-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--magenta),var(--orange))}
-.quote-card blockquote{font-family:var(--font-body);font-size:15px;color:var(--text-primary);line-height:1.6;margin-bottom:16px;font-style:italic}
-.quote-card cite{font-style:normal;font-size:13px;color:var(--text-muted);display:block}
-.review-strip{display:flex;justify-content:center;gap:16px;margin-top:48px;flex-wrap:wrap}
-.review-chip{display:flex;align-items:center;gap:10px;background:var(--bg-light);border-radius:40px;padding:8px 20px 8px 16px;border:1px solid var(--border)}
-.review-chip-name{font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--text-secondary)}
-.review-chip-score{font-family:var(--font-mono);font-size:15px;font-weight:500;color:var(--blue)}
+/* ─── INTEGRATIONS ─── */
+.integ-grid{display:grid;gap:16px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:768px){.integ-grid{grid-template-columns:repeat(3,1fr);gap:20px}}
+@media(min-width:1024px){.integ-grid{grid-template-columns:repeat(4,1fr)}}
+.integ-card{background:var(--white);border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;align-items:center;gap:12px;transition:all 0.25s var(--ease);overflow:hidden}
+.integ-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--line)}
+.integ-card-logo{height:32px;width:100%;display:flex;align-items:center;justify-content:center}
+.integ-card-logo img{height:32px;max-width:90px;width:auto;object-fit:contain;filter:grayscale(0.5);transition:filter 0.25s}
+.integ-card:hover .integ-card-logo img{filter:grayscale(0)}
+.integ-card-name{font-size:13px;font-weight:500;color:var(--ink-soft)}
+.integ-counts{display:grid;grid-template-columns:1fr;gap:20px;margin-bottom:48px}
+@media(min-width:768px){.integ-counts{grid-template-columns:repeat(3,1fr)}}
+.integ-count{text-align:center;padding:32px 24px;background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--line-soft)}
+.integ-count-num{font-family:var(--display);font-size:48px;font-weight:500;line-height:1;margin-bottom:8px;letter-spacing:-0.03em}
+.integ-count.blue .integ-count-num{color:var(--blue)}
+.integ-count.magenta .integ-count-num{color:var(--accent)}
+.integ-count.orange .integ-count-num{color:var(--orange)}
+.integ-count-label{font-size:14px;font-weight:500;color:var(--ink-soft)}
+.integ-cta{text-align:center;margin-top:48px}
 
-/* PRICING */
-.pricing{background:var(--bg-white);padding:100px 0}
-@media(max-width:767px){.pricing{padding:60px 0}}
-.pricing>div>h2{font-size:28px;color:var(--text-primary);margin-bottom:12px}
-@media(min-width:768px){.pricing>div>h2{font-size:42px}}
-.pricing-sub{font-size:17px;color:var(--text-muted);max-width:560px;margin-bottom:48px}
-.pricing-grid{display:grid;gap:20px}
+/* ─── REVIEWS ─── */
+.reviews{display:grid;gap:16px;grid-template-columns:1fr;margin-bottom:48px}
+@media(min-width:768px){.reviews{grid-template-columns:repeat(3,1fr)}}
+.review{background:var(--white);border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:32px;display:flex;flex-direction:column;gap:20px}
+.review-stars{display:flex;gap:2px;color:var(--accent);font-size:16px}
+.review-quote{font-size:16px;line-height:1.55;color:var(--ink-soft);flex:1}
+.review-author{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--line-soft)}
+.review-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--orange));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:14px;font-family:var(--display);flex-shrink:0}
+.review-meta{display:flex;flex-direction:column;line-height:1.3}
+.review-name{font-size:14px;font-weight:600;color:var(--ink)}
+.review-co{font-size:12px;color:var(--muted)}
+.review-platforms{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+.review-platform{display:inline-flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--line-soft);border-radius:999px;padding:10px 18px}
+.review-platform-name{font-size:13px;font-weight:500;color:var(--ink-soft)}
+.review-platform-score{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--accent)}
+
+/* ─── PRICING ─── */
+.pricing-grid{display:grid;gap:20px;grid-template-columns:1fr;max-width:1080px;margin:0 auto}
 @media(min-width:768px){.pricing-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1024px){.pricing-grid{grid-template-columns:repeat(4,1fr)}}
-.price-card{background:var(--bg-white);border:1px solid var(--border);border-radius:16px;padding:32px;display:flex;flex-direction:column;position:relative;transition:all 0.3s cubic-bezier(0.16,1,0.3,1)}
-.price-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,61,92,0.1);border-color:var(--blue)}
-.price-card.featured{border:2px solid var(--magenta);box-shadow:0 8px 30px rgba(234,29,118,0.1)}
-.price-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--magenta);color:#fff;font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:3px 12px;border-radius:12px;white-space:nowrap}
-.price-card h3{font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--text-primary);margin-bottom:8px}
-.price-amount{font-family:var(--font-mono);font-size:28px;font-weight:500;color:var(--text-primary);margin-bottom:4px}
-.price-note{font-size:12px;color:var(--text-muted);margin-bottom:20px}
-.price-features{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;flex:1}
-.price-features li{font-size:14px;color:var(--text-muted);padding-left:18px;position:relative}
-.price-features li::before{content:'\2713';position:absolute;left:0;color:var(--blue);font-weight:600;font-size:12px}
+@media(min-width:1200px){.pricing-grid{grid-template-columns:repeat(4,1fr)}}
+.price{background:var(--white);border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:32px;display:flex;flex-direction:column;transition:all 0.25s var(--ease);position:relative}
+.price:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.price.featured{border:2px solid var(--accent);box-shadow:0 8px 30px rgba(234,29,118,0.12)}
+.price-pop{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:11px;font-weight:600;padding:3px 12px;border-radius:999px;letter-spacing:0.04em;text-transform:uppercase}
+.price-name{font-family:var(--display);font-size:20px;font-weight:600;margin-bottom:16px;color:var(--ink)}
+.price-amount{display:flex;align-items:baseline;gap:4px;margin-bottom:4px}
+.price-amount-num{font-family:var(--display);font-size:36px;font-weight:500;color:var(--ink);letter-spacing:-0.02em}
+.price-amount-mo{font-size:14px;color:var(--muted)}
+.price-from{font-size:12px;color:var(--muted);margin-bottom:24px}
+.price-feat{display:flex;flex-direction:column;gap:12px;margin-bottom:32px;flex:1}
+.price-feat li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--ink-soft);line-height:1.45}
+.price-feat-check{flex-shrink:0;color:var(--green);margin-top:2px}
 .price-cta{margin-top:auto}
-.price-cta .btn{width:100%;justify-content:center}
-.pricing-footer{text-align:center;font-size:14px;color:var(--text-muted);margin-top:40px;line-height:1.5}
+.price-cta .btn{width:100%}
+.pricing-foot{text-align:center;font-size:14px;color:var(--muted);margin-top:40px;line-height:1.55}
 
-/* FINAL CTA */
-.final-cta{background:var(--bg-navy);padding:100px 0;text-align:center}
-.final-cta h2{font-family:var(--font-display);font-weight:700;font-size:30px;color:var(--text-on-dark);margin-bottom:16px}
-.final-cta .grad-text{background:linear-gradient(135deg,var(--blue) 0%,var(--magenta) 40%,var(--orange) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-@media(min-width:768px){.final-cta h2{font-size:48px}}
-.final-cta-body{font-size:17px;color:var(--text-muted-on-dark);max-width:520px;margin:0 auto 32px;line-height:1.6}
-.final-cta-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-bottom:20px}
-.final-cta-note{font-size:13px;color:var(--text-muted-on-dark)}
+/* ─── FINAL CTA ─── */
+.final{padding:0;background:var(--cream)}
+.final-card{background:var(--ink);color:#fff;padding:80px 24px;text-align:center;border-radius:var(--radius-xl);margin:0 24px;overflow:hidden;position:relative}
+@media(min-width:768px){.final-card{padding:120px 40px;margin:0 40px}}
+.final-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(234,29,118,0.15),transparent 50%),radial-gradient(circle at 80% 20%,rgba(0,155,222,0.1),transparent 50%);pointer-events:none}
+.final-card>*{position:relative;z-index:1}
+.final-card h2{font-family:var(--display);font-size:40px;font-weight:500;line-height:1.05;letter-spacing:-0.03em;color:#fff;max-width:680px;margin:0 auto 20px;font-variation-settings:"opsz" 144,"SOFT" 50}
+@media(min-width:768px){.final-card h2{font-size:64px}}
+.final-card h2 em{font-style:italic;color:var(--accent)}
+.final-card p{font-size:18px;color:rgba(255,255,255,0.7);max-width:520px;margin:0 auto 36px;line-height:1.55}
+.final-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:20px}
+.final-note{font-size:13px;color:rgba(255,255,255,0.45)}
 
-/* FOOTER */
-.site-footer{background:var(--bg-navy-deep);padding:64px 0 24px;color:var(--text-muted-on-dark)}
-.footer-grid{display:grid;gap:40px;margin-bottom:48px}
-@media(min-width:768px){.footer-grid{grid-template-columns:1.5fr 1fr 1fr 1fr}}
-.footer-wordmark{margin-bottom:12px}
-.footer-logo{height:28px;width:auto;filter:brightness(0) invert(1)}
-.footer-tagline{font-size:14px;color:var(--text-muted-on-dark);margin-bottom:8px}
-.footer-contact{font-size:13px;color:var(--text-muted-on-dark);line-height:1.6}
-.footer-col h4{font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--text-on-dark);margin-bottom:16px}
-.footer-col ul{display:flex;flex-direction:column;gap:8px}
-.footer-col a{font-size:14px;color:var(--text-muted-on-dark);transition:color 0.15s}
-.footer-col a:hover{color:var(--text-on-dark)}
-.footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);font-size:12px;gap:8px}
-.footer-bottom a{color:var(--magenta);transition:opacity 0.15s}
-.footer-bottom a:hover{opacity:0.7}
+/* ─── FOOTER ─── */
+.footer{background:var(--cream);padding:80px 0 32px;border-top:1px solid var(--line-soft)}
+.footer-inner{display:grid;gap:48px;margin-bottom:48px}
+@media(min-width:768px){.footer-inner{grid-template-columns:1.4fr repeat(3,1fr)}}
+.footer-logo{height:32px;width:auto;margin-bottom:16px}
+.footer-tag{font-size:14px;color:var(--body);margin-bottom:16px;max-width:280px;line-height:1.5}
+.footer-contact{font-size:13px;color:var(--muted);line-height:1.6}
+.footer-contact a{color:var(--accent);transition:opacity 0.2s}
+.footer-contact a:hover{opacity:0.7}
+.footer-col h4{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--ink);margin-bottom:16px;letter-spacing:0}
+.footer-col ul{display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-size:14px;color:var(--body);transition:color 0.2s}
+.footer-col a:hover{color:var(--ink)}
+.footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--line-soft);font-size:12px;color:var(--muted);gap:8px}
+.footer-bottom a{color:var(--accent)}
 
-/* SCROLL REVEAL */
-.reveal-ready{opacity:0;transform:translateY(24px);transition:opacity 0.5s ease,transform 0.5s ease}
-.reveal-ready.is-visible{opacity:1;transform:translateY(0)}
+/* ─── REVEAL ─── */
+.rev{opacity:0;transform:translateY(16px);transition:opacity 0.6s var(--ease),transform 0.6s var(--ease)}
+.rev.in{opacity:1;transform:none}
 
-/* REDUCED MOTION */
 @media(prefers-reduced-motion:reduce){
-*,*::before,*::after{animation-duration:0.01ms !important;transition-duration:0.01ms !important}
-html{scroll-behavior:auto}
-.reveal{opacity:1;transform:none}
+*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+.rev{opacity:1;transform:none}
+.hero-stat-card{animation:none}
+.hero-badge-dot{animation:none}
 }
 </style>
 </head>
 <body>
 
-<nav class="site-nav" aria-label="Main navigation">
+<nav class="nav" aria-label="Main navigation">
 <div class="container nav-inner">
-<a href="/" class="nav-wordmark" aria-label="Stok.ly home"><img src="stokly-logo-v2.svg" alt="Stok.ly" class="nav-logo"></a>
+<a href="/" aria-label="Stok.ly home"><img src="stokly-logo.svg" alt="Stok.ly" class="nav-logo"></a>
 <div class="nav-links">
 <a href="#platform">Product</a>
 <a href="#integrations">Integrations</a>
 <a href="#pricing">Pricing</a>
-<a href="#proof">About</a>
+<a href="#story">Customers</a>
+<a href="#">Resources</a>
 </div>
 <div class="nav-right">
 <a href="#" class="nav-signin">Sign in</a>
-<a href="#demo" class="btn btn-primary btn-sm">Book a Demo</a>
-<button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
-<span></span><span></span><span></span>
-</button>
+<a href="#demo" class="btn btn-primary btn-sm">Book a demo</a>
+<button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div>
 </div>
 </nav>
-<div id="mobile-nav" class="mobile-nav">
+<div class="mobile-nav">
 <a href="#platform">Product</a>
 <a href="#integrations">Integrations</a>
 <a href="#pricing">Pricing</a>
-<a href="#proof">About</a>
-<a href="#" style="color:var(--text-muted);font-size:16px">Sign in</a>
-<a href="#demo" class="btn btn-primary" style="margin-top:16px;width:max-content">Book a Demo</a>
+<a href="#story">Customers</a>
+<a href="#">Resources</a>
+<a href="#" style="font-size:16px;color:var(--muted);font-family:var(--sans)">Sign in</a>
+<a href="#demo" class="btn btn-primary" style="margin-top:8px;width:max-content">Book a demo</a>
 </div>
 
-<section class="hero glow-wrap">
-<video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
-<source src="https://stokly.proudbrands.uk/images/warehouse-bg.webm" type="video/webm">
-</video>
-<div class="hero-overlay"></div>
-<div class="hero-grid"></div>
-<div class="glow glow-magenta" style="top:20%;left:30%;opacity:0.15;width:600px;height:600px"></div>
-<div class="glow glow-blue" style="bottom:10%;right:20%;opacity:0.1;width:500px;height:500px"></div>
+<!-- HERO -->
+<section class="hero">
 <div class="container">
-<div class="hero-inner reveal">
-<p class="hero-eyebrow">Order Management &middot; Inventory &middot; Warehouse &middot; AI</p>
-<h1>You don&rsquo;t need a<br>warehouse system.<br>You need <span class="grad-text-warm">operational control.</span></h1>
-<p class="hero-sub">One real-time stock truth across every channel, location, and system. Still independently owned. No private equity. No surprise price hikes.</p>
+<div class="hero-inner">
+<div class="rev">
+<div class="hero-badge"><span class="hero-badge-dot"></span>Still independently owned, since 2015</div>
+<h1>Operational<br>control for<br><em>warehouses</em> that won&rsquo;t sit still.</h1>
+<p class="hero-sub">One real-time stock truth across every channel, location, and system. Built in the UK. No private equity. No surprise price hikes.</p>
 <div class="hero-ctas">
-<a href="#demo" class="btn btn-primary">Book a 30-Minute Demo</a>
-<a href="#platform" class="hero-text-link">See How It Works <span>&rarr;</span></a>
+<a href="#demo" class="btn btn-primary btn-lg">Book a 30-minute demo</a>
+<a href="#platform" class="btn-arrow">See how it works <span>&rarr;</span></a>
 </div>
-<div class="hero-stats">
-<div class="hero-stat">
-<div class="hero-stat-value" data-target="300">0</div>
-<div class="hero-stat-label">Customers</div>
-</div>
-<div class="hero-stat">
-<div class="hero-stat-value" data-target="290" data-suffix="+">0</div>
-<div class="hero-stat-label">Integrations</div>
-</div>
-<div class="hero-stat">
-<div class="hero-stat-value" data-prefix="&pound;" data-target="299">0</div>
-<div class="hero-stat-label">From /month</div>
+<div class="hero-trust">
+<div class="hero-trust-item">&#9733; <strong>4.0</strong> Trustpilot</div>
+<div class="hero-trust-item"><strong>300+</strong> UK customers</div>
+<div class="hero-trust-item"><strong>UK support</strong>, 8am&ndash;8pm</div>
 </div>
 </div>
-<div class="trust-strip">
-<span>&#9733; 4.0 Trustpilot &middot; 42 reviews</span>
-<span>UK support team &middot; 8am&ndash;8pm</span>
-<span>Founded 2015</span>
+<div class="hero-visual rev">
+<div class="hero-image-frame">
+<img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=80" alt="Warehouse operations with industrial shelving" loading="eager">
+</div>
+<div class="hero-stat-card top">
+<div class="hero-stat-icon">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+</div>
+<div class="hero-stat-text">
+<span class="hero-stat-value">99.7%</span>
+<span class="hero-stat-label">Pick accuracy</span>
+</div>
+</div>
+<div class="hero-stat-card bot">
+<div class="hero-stat-icon">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+</div>
+<div class="hero-stat-text">
+<span class="hero-stat-value">5 days</span>
+<span class="hero-stat-label">Avg. go-live</span>
 </div>
 </div>
 </div>
-<svg class="hero-curve" viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,80 C480,0 960,0 1440,80 L1440,80 L0,80 Z" fill="#FFFFFF"/></svg>
+</div>
+</div>
 </section>
 
-<section class="logo-bar">
+<!-- LOGOS -->
+<section class="logos">
 <div class="container">
-<p class="logo-bar-label">Trusted by brands across the UK</p>
-<div class="logo-bar-row">
+<p class="logos-label">Trusted by retailers and wholesalers across the UK</p>
+<div class="logos-row">
 <img src="https://stokly.proudbrands.uk/images/logos/rowen-homes.webp" alt="Rowen Homes" loading="lazy">
 <img src="https://stokly.proudbrands.uk/images/logos/fujifilm.webp" alt="Fujifilm" loading="lazy">
 <img src="https://stokly.proudbrands.uk/images/logos/corteiz.webp" alt="Corteiz" loading="lazy">
@@ -475,249 +434,160 @@ html{scroll-behavior:auto}
 <img src="https://stokly.proudbrands.uk/images/logos/party-delights.webp" alt="Party Delights" loading="lazy">
 <img src="https://stokly.proudbrands.uk/images/logos/paving-superstore.webp" alt="Paving Superstore" loading="lazy">
 <img src="https://stokly.proudbrands.uk/images/logos/magee.webp" alt="Magee" loading="lazy">
-<img src="https://stokly.proudbrands.uk/images/logos/nopinz.webp" alt="NoPinz" loading="lazy">
-<img src="https://stokly.proudbrands.uk/images/logos/golf2golf.webp" alt="Golf 2 Golf" loading="lazy">
 </div>
 </div>
 </section>
 
-<section class="reality reveal glow-wrap">
-<div class="glow glow-blue" style="top:-200px;right:-200px"></div>
-<div class="glow glow-magenta" style="bottom:-150px;left:-250px"></div>
-<div class="container" style="position:relative;z-index:1">
-<div class="reality-inner">
-<h2>We&rsquo;ve heard <span class="grad-text-cool">this story</span> before.</h2>
+<!-- BIG STAT BAND -->
+<div class="container">
+<div class="stats rev">
+<div class="stats-grid">
+<div class="stat">
+<div class="stat-num"><em>300+</em></div>
+<p class="stat-text">UK retailers, wholesalers and manufacturers running on Stok.ly today.</p>
+</div>
+<div class="stat">
+<div class="stat-num">&pound;<em>0</em></div>
+<p class="stat-text">Raised from private equity. We are not being optimised for exit.</p>
+</div>
+<div class="stat">
+<div class="stat-num"><em>5</em> days</div>
+<p class="stat-text">Average time from kick-off call to going live on the platform.</p>
+</div>
+</div>
+</div>
+</div>
 
-<div class="reality-line">
-<span class="reality-marker m1">1</span>
-<div class="reality-copy">
+<!-- REALITY / PAIN -->
+<section class="section section-cream rev">
+<div class="container">
+<div class="section-header">
+<span class="eyebrow">The pattern</span>
+<h2>We&rsquo;ve heard <em>this story</em> before.</h2>
+</div>
+<div class="reality-wrap">
+<div class="reality-item">
+<span class="reality-step">01</span>
+<div class="reality-body">
 <h3>It starts with a spreadsheet.</h3>
-<p>Someone builds a stock tracker in Excel. It works for a while. Then you add a second warehouse. Then a Shopify store. Then Amazon. Now you&rsquo;ve got <span class="highlight">four systems that have never agreed on a single number.</span></p>
+<p>Someone builds a stock tracker in Excel. It works. Then you add a second warehouse. Then a Shopify store. Then Amazon. Now you&rsquo;ve got <strong>four systems that have never agreed on a single number.</strong></p>
 </div>
 </div>
-
-<div class="reality-line">
-<span class="reality-marker m2">2</span>
-<div class="reality-copy">
+<div class="reality-item">
+<span class="reality-step">02</span>
+<div class="reality-body">
 <h3>Then the mistakes start.</h3>
-<p>An order ships from the wrong location. A customer buys something that&rsquo;s been out of stock for a week. A return lands and nobody updates anything. <span class="highlight">Each one costs you a customer you already paid to acquire.</span></p>
+<p>An order ships from the wrong location. A customer buys something out of stock. A return lands and nobody updates anything. <strong>Each one costs you a customer you already paid to acquire.</strong></p>
 </div>
 </div>
-
-<div class="reality-line">
-<span class="reality-marker m3">3</span>
-<div class="reality-copy">
+<div class="reality-item">
+<span class="reality-step">03</span>
+<div class="reality-body">
 <h3>Then you stop trusting your own data.</h3>
-<p>You walk the warehouse floor to count stock because the system can&rsquo;t be trusted. You over-order because you&rsquo;d rather have dead stock than a stockout. <span class="highlight">Your 45-day lead times don&rsquo;t forgive guesswork.</span></p>
+<p>You walk the floor to count stock because the system can&rsquo;t be trusted. You over-order because you&rsquo;d rather have dead stock than a stockout. <strong>Your 45-day lead times don&rsquo;t forgive guesswork.</strong></p>
 </div>
 </div>
-
 <div class="reality-kicker">
-<p>This isn&rsquo;t a software problem. It&rsquo;s what happens when you&rsquo;ve <span class="grad-text-warm">outgrown the tools you started with.</span></p>
+<p>This isn&rsquo;t a software problem. It&rsquo;s what happens when you&rsquo;ve <em>outgrown the tools you started with.</em></p>
 </div>
 </div>
 </div>
 </section>
 
-<section class="independence reveal glow-wrap">
-<div class="glow glow-blue" style="top:-100px;left:50%;transform:translateX(-50%);opacity:0.15;width:800px;height:800px"></div>
-<div class="glow glow-magenta" style="bottom:-200px;right:-100px;opacity:0.08"></div>
-<div class="container" style="position:relative;z-index:1">
-<span class="indie-pill">Still Independently Owned</span>
-<h2>While our competitors were being acquired, <span class="grad-text">we were getting better at what we do.</span></h2>
-<div class="indie-body">
+<!-- INDEPENDENCE -->
+<section class="section section-cream rev" style="padding-top:0">
+<div class="container">
+<div class="indie-card">
+<span class="indie-badge">Still independently owned</span>
+<h2>While our competitors were being acquired, <em>we were getting better at what we do.</em></h2>
 <p>Brightpearl was acquired by Sage. Cin7 sold to EQT Partners. Linnworks went to Marlin Equity. Orderwise joined the Forterro roll-up. Every major player in our market has been through the same private equity playbook: raise prices, cut support, extract margin.</p>
-<p>Stok.ly has not been acquired. We are not being optimised for exit. We are backed by Midven and run by the people who built the platform. Our customers have a first-name relationship with the people who answer the phone.</p>
-<p>We intend to keep it that way.</p>
-</div>
+<p>Stok.ly has not been acquired. We are backed by Midven and run by the people who built the platform. Our customers have a first-name relationship with the people who answer the phone. We intend to keep it that way.</p>
 <div class="indie-stats">
 <div class="indie-stat">
-<div class="indie-stat-value">&pound;0</div>
+<div class="indie-stat-value">&pound;<em>0</em></div>
 <div class="indie-stat-label">Zero private equity investment</div>
 </div>
 <div class="indie-stat">
-<div class="indie-stat-value">Since 2015</div>
-<div class="indie-stat-label">Founded in Hereford, still independent</div>
+<div class="indie-stat-value">Since <em>2015</em></div>
+<div class="indie-stat-label">Founded in Hereford, still here</div>
 </div>
 <div class="indie-stat">
-<div class="indie-stat-value">8am&ndash;8pm</div>
-<div class="indie-stat-label">UK support team, 365 days a year</div>
+<div class="indie-stat-value"><em>365</em> days</div>
+<div class="indie-stat-label">UK support, 8am&ndash;8pm every day</div>
+</div>
 </div>
 </div>
 </div>
 </section>
 
-<section id="platform" class="platform glow-wrap">
-<div class="glow glow-magenta" style="top:100px;right:-300px"></div>
-<div class="glow glow-orange" style="bottom:50px;left:-200px;opacity:0.08"></div>
-<div class="container" style="position:relative;z-index:1">
-<p class="section-label">The Platform</p>
-<h2>One system for your <span class="grad-text">entire operation.</span></h2>
-<p class="platform-sub">From goods-in to despatch. Warehouse floor to customer doorstep. B2C and B2B in the same platform.</p>
-
-<div class="pillar-tabs" role="tablist">
-<button class="pillar-tab active" data-panel="warehouse" data-color="blue" role="tab" aria-selected="true">Warehouse</button>
-<button class="pillar-tab" data-panel="orders" data-color="magenta" role="tab" aria-selected="false">Orders</button>
-<button class="pillar-tab" data-panel="ai" data-color="orange" role="tab" aria-selected="false">AI Forecasting</button>
-<button class="pillar-tab" data-panel="manufacturing" data-color="navy" role="tab" aria-selected="false">Manufacturing</button>
+<!-- PLATFORM FEATURES (alternating) -->
+<section id="platform" class="section section-cream rev" style="padding-top:48px">
+<div class="container">
+<div class="section-header">
+<span class="eyebrow">The platform</span>
+<h2>One system. Your <em>entire operation.</em></h2>
+<p class="section-sub">From goods-in to despatch. Warehouse floor to customer doorstep. B2C and B2B in the same platform.</p>
 </div>
 
-<div class="pillar-panels">
-
-<div class="pillar-panel active" id="panel-warehouse" role="tabpanel">
-<div class="panel-inner">
-<div class="panel-copy">
-<div class="panel-number c-blue">70+</div>
-<div class="panel-number-label">Courier and freight integrations</div>
-<h3>Warehouse Management</h3>
-<p>Barcode scanning via Android app. Multi-location bin inventory. Paperless pick, pack, and despatch. Real-time stock movements with full audit trails by user and timestamp.</p>
-<div class="panel-features">
-<div class="panel-feat"><span class="panel-feat-dot d-blue"></span>Barcode scanning via Android app</div>
-<div class="panel-feat"><span class="panel-feat-dot d-blue"></span>Multi-warehouse bin management</div>
-<div class="panel-feat"><span class="panel-feat-dot d-blue"></span>Automated pick-face replenishment</div>
-<div class="panel-feat"><span class="panel-feat-dot d-blue"></span>Goods-in with PO matching</div>
-<div class="panel-feat"><span class="panel-feat-dot d-blue"></span>Paperless pick, pack, despatch</div>
-<div class="panel-feat"><span class="panel-feat-dot d-blue"></span>Full audit trail by user</div>
+<!-- Feature 1: Warehouse -->
+<div class="feature">
+<div class="feature-inner">
+<div class="feature-copy">
+<span class="feature-tag"><span class="feature-tag-dot blue"></span>Warehouse Management</span>
+<h2>Every shelf. <em>Every scan.</em> Accounted for.</h2>
+<p class="feature-desc">Barcode scanning via Android app. Multi-location bin inventory. Paperless pick, pack, and despatch. Real-time stock movements with full audit trails by user and timestamp.</p>
+<ul class="feature-list">
+<li><span class="feature-check">&#10003;</span><span>Barcode scanning with the Stok.ly Android warehouse app</span></li>
+<li><span class="feature-check">&#10003;</span><span>Multi-warehouse bin management with rack and shelf addressing</span></li>
+<li><span class="feature-check">&#10003;</span><span>Automated pick-face replenishment based on pick rate</span></li>
+<li><span class="feature-check">&#10003;</span><span>70+ courier and freight integrations for despatch</span></li>
+</ul>
+<a href="#" class="btn-arrow">Explore warehouse management <span>&rarr;</span></a>
 </div>
+<div class="feature-visual">
+<div class="browser-mock">
+<div class="browser-bar">
+<div class="browser-dots"><span></span><span></span><span></span></div>
+<div class="browser-url">app.stok.ly/warehouse</div>
 </div>
-<div class="panel-visual">
-<div class="panel-mock">
-<div class="panel-mock-bar"><span class="panel-mock-dot"></span><span class="panel-mock-dot"></span><span class="panel-mock-dot"></span></div>
-<div class="panel-mock-body" style="flex-direction:row;gap:0">
-<div class="mock-sidebar"><div class="mock-sidebar-item active"></div><div class="mock-sidebar-item"></div><div class="mock-sidebar-item"></div><div class="mock-sidebar-item"></div></div>
-<div style="flex:1;padding:12px;display:flex;flex-direction:column;gap:10px">
-<div class="mock-row"><div class="mock-block" style="background:var(--blue-dim);flex:2"></div><div class="mock-block" style="background:var(--blue-dim);flex:1"></div><div class="mock-block" style="background:var(--blue-dim);flex:1"></div></div>
-<div style="display:flex;gap:8px;flex:1">
-<div style="flex:2;background:var(--bg-white);border-radius:8px;border:1px solid var(--border);padding:10px;display:flex;flex-direction:column;gap:6px">
-<div class="mock-block-sm" style="background:var(--border);width:60%"></div>
-<div class="mock-block-sm" style="background:var(--border);width:90%"></div>
-<div class="mock-block-sm" style="background:var(--border);width:75%"></div>
-<div class="mock-block-sm" style="background:var(--blue);width:40%;opacity:0.4"></div>
-<div class="mock-block-sm" style="background:var(--border);width:85%"></div>
-<div class="mock-block-sm" style="background:var(--border);width:60%"></div>
+<div class="browser-body">
+<div style="display:flex;min-height:340px">
+<div style="width:56px;background:var(--ink);padding:16px 0;display:flex;flex-direction:column;align-items:center;gap:8px">
+<div style="width:32px;height:32px;border-radius:8px;background:var(--accent)"></div>
+<div style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06)"></div>
+<div style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06)"></div>
+<div style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06)"></div>
 </div>
-<div style="flex:1;background:var(--bg-white);border-radius:8px;border:1px solid var(--border);padding:10px;display:flex;flex-direction:column;justify-content:flex-end;gap:4px">
-<div style="display:flex;gap:3px;align-items:flex-end;height:80px">
-<div class="mock-chart-bar" style="background:var(--blue);opacity:0.2;height:30%"></div>
-<div class="mock-chart-bar" style="background:var(--blue);opacity:0.3;height:45%"></div>
-<div class="mock-chart-bar" style="background:var(--blue);opacity:0.4;height:35%"></div>
-<div class="mock-chart-bar" style="background:var(--blue);opacity:0.5;height:60%"></div>
-<div class="mock-chart-bar" style="background:var(--blue);opacity:0.6;height:50%"></div>
-<div class="mock-chart-bar" style="background:var(--blue);opacity:0.8;height:75%"></div>
-<div class="mock-chart-bar" style="background:var(--blue);height:90%"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="pillar-panel" id="panel-orders" role="tabpanel">
-<div class="panel-inner">
-<div class="panel-copy">
-<div class="panel-number c-magenta">200+</div>
-<div class="panel-number-label">eCommerce integrations</div>
-<h3>Order Management</h3>
-<p>Pull orders from Shopify, WooCommerce, Amazon, eBay, and B2B channels. Automatically allocated, routed, and tracked. Backorders, pre-orders, and proforma invoicing handled without manual intervention.</p>
-<div class="panel-features">
-<div class="panel-feat"><span class="panel-feat-dot d-magenta"></span>200+ ecommerce integrations</div>
-<div class="panel-feat"><span class="panel-feat-dot d-magenta"></span>B2B trade pricing and accounts</div>
-<div class="panel-feat"><span class="panel-feat-dot d-magenta"></span>Automated invoicing on despatch</div>
-<div class="panel-feat"><span class="panel-feat-dot d-magenta"></span>Pre-allocation to inbound POs</div>
-<div class="panel-feat"><span class="panel-feat-dot d-magenta"></span>Multi-currency support</div>
-<div class="panel-feat"><span class="panel-feat-dot d-magenta"></span>Backorder and pre-order handling</div>
-</div>
-</div>
-<div class="panel-visual">
-<div class="panel-mock">
-<div class="panel-mock-bar"><span class="panel-mock-dot"></span><span class="panel-mock-dot"></span><span class="panel-mock-dot"></span></div>
-<div class="panel-mock-body">
-<div class="mock-row"><div class="mock-block" style="background:var(--magenta-dim);flex:1"></div><div class="mock-block" style="background:var(--magenta-dim);flex:1"></div><div class="mock-block" style="background:var(--magenta-dim);flex:1"></div></div>
-<div style="background:var(--bg-white);border-radius:8px;border:1px solid var(--border);padding:12px;flex:1">
-<div class="mock-row" style="padding-bottom:8px;border-bottom:1px solid var(--border);margin-bottom:8px"><div class="mock-block-sm" style="background:var(--border);width:15%"></div><div class="mock-block-sm" style="background:var(--border);width:25%;margin-left:auto"></div><div class="mock-block-sm" style="background:var(--border);width:12%"></div><div class="mock-pill" style="background:var(--magenta-dim);width:48px;height:16px"></div></div>
-<div class="mock-row" style="padding-bottom:8px;border-bottom:1px solid var(--border);margin-bottom:8px"><div class="mock-block-sm" style="background:var(--border);width:15%"></div><div class="mock-block-sm" style="background:var(--border);width:20%;margin-left:auto"></div><div class="mock-block-sm" style="background:var(--border);width:12%"></div><div class="mock-pill" style="background:var(--blue-dim);width:48px;height:16px"></div></div>
-<div class="mock-row" style="padding-bottom:8px;border-bottom:1px solid var(--border);margin-bottom:8px"><div class="mock-block-sm" style="background:var(--border);width:15%"></div><div class="mock-block-sm" style="background:var(--border);width:30%;margin-left:auto"></div><div class="mock-block-sm" style="background:var(--border);width:12%"></div><div class="mock-pill" style="background:var(--orange-dim);width:48px;height:16px"></div></div>
-<div class="mock-row"><div class="mock-block-sm" style="background:var(--border);width:15%"></div><div class="mock-block-sm" style="background:var(--border);width:18%;margin-left:auto"></div><div class="mock-block-sm" style="background:var(--border);width:12%"></div><div class="mock-pill" style="background:var(--magenta-dim);width:48px;height:16px"></div></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="pillar-panel" id="panel-ai" role="tabpanel">
-<div class="panel-inner">
-<div class="panel-copy">
-<div class="panel-number c-orange">AI</div>
-<div class="panel-number-label">Powered by machine learning</div>
-<h3>Demand Forecasting</h3>
-<p>Demand prediction, automated purchase order generation, and intelligent stock balancing across locations. Configurable to your lead times, minimum stock levels, and supplier constraints.</p>
-<div class="panel-features">
-<div class="panel-feat"><span class="panel-feat-dot d-orange"></span>AI-generated purchase orders</div>
-<div class="panel-feat"><span class="panel-feat-dot d-orange"></span>Stock transfer recommendations</div>
-<div class="panel-feat"><span class="panel-feat-dot d-orange"></span>Pick-face replenishment by rate</div>
-<div class="panel-feat"><span class="panel-feat-dot d-orange"></span>Manufacturing demand planning</div>
-<div class="panel-feat"><span class="panel-feat-dot d-orange"></span>Supplier constraint modelling</div>
-<div class="panel-feat"><span class="panel-feat-dot d-orange"></span>Lead time optimisation</div>
-</div>
-</div>
-<div class="panel-visual">
-<div class="panel-mock">
-<div class="panel-mock-bar"><span class="panel-mock-dot"></span><span class="panel-mock-dot"></span><span class="panel-mock-dot"></span></div>
-<div class="panel-mock-body" style="justify-content:center;align-items:center;min-height:260px;gap:16px">
-<svg viewBox="0 0 300 120" width="280" aria-hidden="true">
-<defs><linearGradient id="aig" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#FF8300"/><stop offset="100%" stop-color="#EA1D76"/></linearGradient>
-<linearGradient id="aif" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF8300" stop-opacity="0.15"/><stop offset="100%" stop-color="#FF8300" stop-opacity="0"/></linearGradient></defs>
-<polyline points="0,90 30,85 60,80 90,70 120,75 150,55 180,45 210,50 240,30 270,20 300,10" fill="url(#aif)" stroke="none"/>
-<polyline points="0,90 30,85 60,80 90,70 120,75 150,55 180,45 210,50 240,30 270,20 300,10" fill="none" stroke="url(#aig)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-<line x1="150" y1="0" x2="150" y2="120" stroke="var(--border)" stroke-width="1" stroke-dasharray="4"/>
-<text x="155" y="12" font-family="IBM Plex Mono" font-size="9" fill="#6B8299">Forecast</text>
-<text x="10" y="12" font-family="IBM Plex Mono" font-size="9" fill="#6B8299">Actual</text>
-<circle cx="300" cy="10" r="4" fill="#EA1D76"/>
-</svg>
+<div style="flex:1;padding:20px;display:flex;flex-direction:column;gap:16px">
 <div style="display:flex;gap:12px">
-<div style="background:var(--orange-dim);border-radius:8px;padding:10px 16px;text-align:center"><div style="font-family:var(--font-mono);font-size:18px;font-weight:500;color:var(--orange)">94.2%</div><div style="font-size:10px;color:var(--text-muted)">Forecast accuracy</div></div>
-<div style="background:var(--magenta-dim);border-radius:8px;padding:10px 16px;text-align:center"><div style="font-family:var(--font-mono);font-size:18px;font-weight:500;color:var(--magenta)">12 hrs</div><div style="font-size:10px;color:var(--text-muted)">Saved per week</div></div>
+<div style="flex:1;background:var(--cream);border:1px solid var(--line-soft);border-radius:10px;padding:14px">
+<div style="font-size:11px;color:var(--muted);margin-bottom:6px">Orders today</div>
+<div style="font-family:var(--display);font-size:24px;font-weight:600;color:var(--ink)">847</div>
+<div style="font-family:var(--mono);font-size:11px;color:var(--green);margin-top:2px">+12.3%</div>
+</div>
+<div style="flex:1;background:var(--cream);border:1px solid var(--line-soft);border-radius:10px;padding:14px">
+<div style="font-size:11px;color:var(--muted);margin-bottom:6px">Pick accuracy</div>
+<div style="font-family:var(--display);font-size:24px;font-weight:600;color:var(--ink)">99.7%</div>
+<div style="font-family:var(--mono);font-size:11px;color:var(--green);margin-top:2px">+0.4%</div>
+</div>
+<div style="flex:1;background:var(--cream);border:1px solid var(--line-soft);border-radius:10px;padding:14px">
+<div style="font-size:11px;color:var(--muted);margin-bottom:6px">Units shipped</div>
+<div style="font-family:var(--display);font-size:24px;font-weight:600;color:var(--ink)">2,341</div>
+<div style="font-family:var(--mono);font-size:11px;color:var(--green);margin-top:2px">+8.1%</div>
+</div>
+</div>
+<div style="background:var(--cream);border:1px solid var(--line-soft);border-radius:10px;padding:16px;flex:1">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+<div style="font-size:12px;font-weight:600;color:var(--ink-soft)">Recent activity</div>
+<div style="font-family:var(--mono);font-size:10px;color:var(--muted)">Live</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;align-items:center;gap:10px;font-size:12px"><span style="font-family:var(--mono);color:var(--ink);width:50px">#4821</span><span style="color:var(--body);flex:1">J. Richardson</span><span style="background:rgba(255,131,0,0.12);color:var(--orange);padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600">PICKED</span></div>
+<div style="display:flex;align-items:center;gap:10px;font-size:12px"><span style="font-family:var(--mono);color:var(--ink);width:50px">#4820</span><span style="color:var(--body);flex:1">Smith &amp; Co Ltd</span><span style="background:rgba(0,155,222,0.12);color:var(--blue);padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600">PACKED</span></div>
+<div style="display:flex;align-items:center;gap:10px;font-size:12px"><span style="font-family:var(--mono);color:var(--ink);width:50px">#4819</span><span style="color:var(--body);flex:1">Heritage Apparel</span><span style="background:rgba(234,29,118,0.12);color:var(--accent);padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600">SHIPPED</span></div>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-
-<div class="pillar-panel" id="panel-manufacturing" role="tabpanel">
-<div class="panel-inner">
-<div class="panel-copy">
-<div class="panel-number c-navy">BOMs</div>
-<div class="panel-number-label">Bills of materials, live</div>
-<h3>Manufacturing &amp; Kitting</h3>
-<p>Manage raw material inventory and finished goods in the same platform. Build kits and bundles whose available quantity is calculated in real time from component stock and pushed live to every connected sales channel.</p>
-<div class="panel-features">
-<div class="panel-feat"><span class="panel-feat-dot d-navy"></span>Bills of materials (BOMs)</div>
-<div class="panel-feat"><span class="panel-feat-dot d-navy"></span>Component inventory management</div>
-<div class="panel-feat"><span class="panel-feat-dot d-navy"></span>Kit stock pushed to ecommerce</div>
-<div class="panel-feat"><span class="panel-feat-dot d-navy"></span>Yield and reject rate reporting</div>
-<div class="panel-feat"><span class="panel-feat-dot d-navy"></span>Multi-stage production tracking</div>
-<div class="panel-feat"><span class="panel-feat-dot d-navy"></span>Raw material reorder alerts</div>
-</div>
-</div>
-<div class="panel-visual">
-<div class="panel-mock">
-<div class="panel-mock-bar"><span class="panel-mock-dot"></span><span class="panel-mock-dot"></span><span class="panel-mock-dot"></span></div>
-<div class="panel-mock-body" style="gap:8px">
-<div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em">Bill of Materials: SKU-4280</div>
-<div style="background:var(--bg-white);border-radius:8px;border:1px solid var(--border);padding:10px">
-<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><div style="width:8px;height:8px;border-radius:2px;background:var(--bg-navy)"></div><div class="mock-block-sm" style="background:var(--border);width:35%;flex:none"></div><div style="margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)">x3</div><div style="font-family:var(--font-mono);font-size:11px;color:#1D9E75">In stock</div></div>
-<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><div style="width:8px;height:8px;border-radius:2px;background:var(--magenta)"></div><div class="mock-block-sm" style="background:var(--border);width:45%;flex:none"></div><div style="margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)">x1</div><div style="font-family:var(--font-mono);font-size:11px;color:#1D9E75">In stock</div></div>
-<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><div style="width:8px;height:8px;border-radius:2px;background:var(--orange)"></div><div class="mock-block-sm" style="background:var(--border);width:30%;flex:none"></div><div style="margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)">x2</div><div style="font-family:var(--font-mono);font-size:11px;color:var(--orange)">Low</div></div>
-<div style="display:flex;align-items:center;gap:8px;padding:6px 0"><div style="width:8px;height:8px;border-radius:2px;background:var(--blue)"></div><div class="mock-block-sm" style="background:var(--border);width:25%;flex:none"></div><div style="margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-muted)">x1</div><div style="font-family:var(--font-mono);font-size:11px;color:#1D9E75">In stock</div></div>
-</div>
-<div style="display:flex;justify-content:space-between;padding:8px 4px">
-<div style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted)">Yield: <span style="color:var(--text-primary);font-weight:500">97.3%</span></div>
-<div style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted)">Can build: <span style="color:var(--text-primary);font-weight:500">142 units</span></div>
 </div>
 </div>
 </div>
@@ -725,173 +595,309 @@ html{scroll-behavior:auto}
 </div>
 </div>
 
-</div>
-</div>
-</section>
-
-<section id="integrations" class="integrations reveal">
-<div class="container">
-<h2>Connects to everything you already use</h2>
-<div class="int-grid">
-<div class="int-group">
-<div class="int-count">200+</div>
-<h3>eCommerce &amp; Marketplaces</h3>
-<div class="int-logos">
-<img src="https://stokly.proudbrands.uk/images/integrations/shopify.svg" alt="Shopify" loading="lazy">
-<img src="https://stokly.proudbrands.uk/images/integrations/woocommerce.svg" alt="WooCommerce" loading="lazy">
-<img src="https://stokly.proudbrands.uk/images/integrations/amazon.svg" alt="Amazon" loading="lazy">
-<img src="https://stokly.proudbrands.uk/images/integrations/ebay.svg" alt="eBay" loading="lazy">
-</div>
-<p class="int-more">and 196+ more</p>
-</div>
-<div class="int-group">
-<div class="int-count">20+</div>
-<h3>Accounting</h3>
-<div class="int-logos">
-<img src="https://stokly.proudbrands.uk/images/integrations/xero.svg" alt="Xero" loading="lazy">
-<img src="https://stokly.proudbrands.uk/images/integrations/sage.svg" alt="Sage" loading="lazy">
-<img src="https://stokly.proudbrands.uk/images/integrations/quickbooks.svg" alt="QuickBooks" loading="lazy">
-</div>
-<p class="int-more">and 17+ more</p>
-</div>
-<div class="int-group">
-<div class="int-count">70+</div>
-<h3>Courier &amp; Freight</h3>
-<div class="int-logos">
-<img src="https://stokly.proudbrands.uk/images/integrations/royal-mail.svg" alt="Royal Mail" loading="lazy">
-<img src="https://stokly.proudbrands.uk/images/integrations/dpd.svg" alt="DPD" loading="lazy">
-<img src="https://stokly.proudbrands.uk/images/integrations/dhl.svg" alt="DHL" loading="lazy">
-<img src="https://stokly.proudbrands.uk/images/integrations/fedex.svg" alt="FedEx" loading="lazy">
-<img src="https://stokly.proudbrands.uk/images/integrations/ups.svg" alt="UPS" loading="lazy">
-</div>
-<p class="int-more">and 65+ more</p>
-</div>
-</div>
-<div class="int-cta">
-<a href="#" class="btn btn-ghost">View All 290+ Integrations</a>
-</div>
-</div>
-</section>
-
-<section id="proof" class="proof reveal glow-wrap">
-<div class="glow glow-magenta" style="top:0;left:30%;opacity:0.06;width:600px;height:600px"></div>
-<div class="container" style="position:relative;z-index:1">
-<p class="section-label">Customer Outcomes</p>
-<h2>What our customers <span class="grad-text-warm">have to say</span></h2>
-
-<div class="proof-hero-quote">
-<blockquote>&ldquo;The Stock App cut our pick and pack errors to almost zero overnight. We&rsquo;ve been with Stok.ly for 4 years now.&rdquo;</blockquote>
-<cite>Matt, Appleton Sweets</cite>
-</div>
-
-<div class="proof-grid">
-<div class="quote-card">
-<blockquote>&ldquo;Stok.ly works really well. It&rsquo;s user friendly and does everything we expected. New staff pick it up very quickly.&rdquo;</blockquote>
-<cite>Ryan, Senior Sales &amp; Systems Manager, Airtec</cite>
-</div>
-<div class="quote-card">
-<blockquote>&ldquo;Having used other systems in the past we find Stok.ly to be second to none. Comprehensive, stable and user friendly.&rdquo;</blockquote>
-<cite>Scott B., Operations Manager &middot; Capterra</cite>
-</div>
-<div class="quote-card">
-<blockquote>&ldquo;Stok.ly has revolutionised the way I manage my inventory, and I couldn&rsquo;t be more thrilled.&rdquo;</blockquote>
-<cite>Hand Tool Centre</cite>
-</div>
-</div>
-
-<div class="review-strip">
-<div class="review-chip"><span class="review-chip-name">Trustpilot</span><span class="review-chip-score">4.0/5</span></div>
-<div class="review-chip"><span class="review-chip-name">Capterra</span><span class="review-chip-score">4.9/5</span></div>
-<div class="review-chip"><span class="review-chip-name">G2</span><span class="review-chip-score">4.4/5</span></div>
-</div>
-</div>
-</section>
-
-<section id="pricing" class="pricing reveal glow-wrap">
-<div class="glow glow-blue" style="top:-100px;left:50%;transform:translateX(-50%);opacity:0.08"></div>
-<div class="container" style="position:relative;z-index:1">
-<p class="section-label">Pricing</p>
-<h2>Transparent pricing. No per-user fees.</h2>
-<p class="pricing-sub">One platform covering WMS, OMS, POS, and AI. Priced for growing businesses, not enterprise budgets.</p>
-<div class="pricing-grid">
-<div class="price-card">
-<h3>Lite Retail</h3>
-<div class="price-amount">From &pound;299.99<span style="font-size:16px">/mo</span></div>
-<div class="price-note">Annual discount available</div>
-<ul class="price-features">
-<li>Multi-location, multi-channel OMS</li>
-<li>Product Information Management</li>
-<li>Warehouse and shipping</li>
-<li>Email support</li>
+<!-- Feature 2: Orders (reverse) -->
+<div class="feature reverse">
+<div class="feature-inner">
+<div class="feature-copy">
+<span class="feature-tag"><span class="feature-tag-dot magenta"></span>Order Management</span>
+<h2>200+ channels. <em>One inbox.</em></h2>
+<p class="feature-desc">Pull orders from Shopify, WooCommerce, Amazon, eBay, and B2B channels. Automatically allocated, routed, and tracked. Backorders, pre-orders, and proforma invoicing handled without manual intervention.</p>
+<ul class="feature-list">
+<li><span class="feature-check">&#10003;</span><span>200+ ecommerce integrations across marketplaces and platforms</span></li>
+<li><span class="feature-check">&#10003;</span><span>B2B trade pricing, credit accounts and proforma invoicing</span></li>
+<li><span class="feature-check">&#10003;</span><span>Automated invoicing triggered on despatch</span></li>
+<li><span class="feature-check">&#10003;</span><span>Pre-allocation of inbound purchase orders to open demand</span></li>
 </ul>
-<div class="price-cta"><a href="#demo" class="btn btn-ghost btn-sm" style="width:100%;justify-content:center">Get a Quote</a></div>
+<a href="#" class="btn-arrow">Explore order management <span>&rarr;</span></a>
 </div>
-<div class="price-card">
-<h3>Pro Warehouse</h3>
-<div class="price-amount">From &pound;599.99<span style="font-size:16px">/mo</span></div>
-<div class="price-note">Annual discount available</div>
-<ul class="price-features">
-<li>Everything in Lite Retail</li>
-<li>Manufacturing and pre-allocation</li>
-<li>API access</li>
-<li>Email and live chat support</li>
-</ul>
-<div class="price-cta"><a href="#demo" class="btn btn-ghost btn-sm" style="width:100%;justify-content:center">Get a Quote</a></div>
+<div class="feature-visual">
+<div class="browser-mock">
+<div class="browser-bar">
+<div class="browser-dots"><span></span><span></span><span></span></div>
+<div class="browser-url">app.stok.ly/orders</div>
 </div>
-<div class="price-card featured">
-<span class="price-badge">Most Popular</span>
-<h3>Cloud ERP</h3>
-<div class="price-amount">From &pound;1,199.99<span style="font-size:16px">/mo</span></div>
-<div class="price-note">Annual discount available</div>
-<ul class="price-features">
-<li>AI forecasting included</li>
-<li>Manufacturing, kitting, ePOS</li>
-<li>Custom reporting and API</li>
-<li>Phone, chat, and email support</li>
-</ul>
-<div class="price-cta"><a href="#demo" class="btn btn-primary btn-sm" style="width:100%;justify-content:center">Get a Quote</a></div>
+<div class="browser-body" style="padding:20px;min-height:360px">
+<div style="display:flex;gap:10px;margin-bottom:16px;font-size:11px;color:var(--muted)">
+<span style="padding:6px 12px;background:var(--ink);color:#fff;border-radius:999px">All 847</span>
+<span style="padding:6px 12px;background:var(--cream);border-radius:999px">New 23</span>
+<span style="padding:6px 12px;background:var(--cream);border-radius:999px">Picking 45</span>
+<span style="padding:6px 12px;background:var(--cream);border-radius:999px">Shipped 779</span>
 </div>
-<div class="price-card">
-<h3>Enterprise</h3>
-<div class="price-amount">From &pound;2,999.99<span style="font-size:16px">/mo</span></div>
-<div class="price-note">Custom quoted</div>
-<ul class="price-features">
-<li>Unlimited multi-location</li>
-<li>Dedicated customer success team</li>
-<li>AI forecasting and AI assistant</li>
-<li>Priority phone, chat, and email</li>
-</ul>
-<div class="price-cta"><a href="#demo" class="btn btn-ghost btn-sm" style="width:100%;justify-content:center">Get a Quote</a></div>
+<div style="background:var(--cream);border-radius:10px;overflow:hidden">
+<div style="display:grid;grid-template-columns:70px 1fr 90px 80px 60px;padding:10px 14px;background:var(--cream-deep);font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em">
+<span>Order</span><span>Customer</span><span>Channel</span><span>Status</span><span>Total</span>
+</div>
+<div style="display:grid;grid-template-columns:70px 1fr 90px 80px 60px;padding:12px 14px;align-items:center;font-size:12px;border-top:1px solid var(--line-soft);background:var(--white)"><span style="font-family:var(--mono);color:var(--ink);font-weight:500">#4821</span><span style="color:var(--body)">J. Richardson</span><span style="color:var(--muted);font-size:11px">Shopify</span><span style="background:rgba(255,131,0,0.12);color:var(--orange);padding:2px 6px;border-radius:4px;font-size:9px;font-weight:600;text-align:center;width:max-content">PICKED</span><span style="font-family:var(--mono);color:var(--ink)">&pound;142</span></div>
+<div style="display:grid;grid-template-columns:70px 1fr 90px 80px 60px;padding:12px 14px;align-items:center;font-size:12px;border-top:1px solid var(--line-soft);background:var(--white)"><span style="font-family:var(--mono);color:var(--ink);font-weight:500">#4820</span><span style="color:var(--body)">Smith &amp; Co Ltd</span><span style="color:var(--muted);font-size:11px">Amazon</span><span style="background:rgba(0,155,222,0.12);color:var(--blue);padding:2px 6px;border-radius:4px;font-size:9px;font-weight:600;text-align:center;width:max-content">PACKED</span><span style="font-family:var(--mono);color:var(--ink)">&pound;890</span></div>
+<div style="display:grid;grid-template-columns:70px 1fr 90px 80px 60px;padding:12px 14px;align-items:center;font-size:12px;border-top:1px solid var(--line-soft);background:var(--white)"><span style="font-family:var(--mono);color:var(--ink);font-weight:500">#4819</span><span style="color:var(--body)">Heritage Apparel</span><span style="color:var(--muted);font-size:11px">Woo</span><span style="background:rgba(234,29,118,0.12);color:var(--accent);padding:2px 6px;border-radius:4px;font-size:9px;font-weight:600;text-align:center;width:max-content">SHIPPED</span><span style="font-family:var(--mono);color:var(--ink)">&pound;540</span></div>
+<div style="display:grid;grid-template-columns:70px 1fr 90px 80px 60px;padding:12px 14px;align-items:center;font-size:12px;border-top:1px solid var(--line-soft);background:var(--white)"><span style="font-family:var(--mono);color:var(--ink);font-weight:500">#4818</span><span style="color:var(--body)">Paving Superstore</span><span style="color:var(--muted);font-size:11px">Direct</span><span style="background:rgba(14,138,95,0.12);color:var(--green);padding:2px 6px;border-radius:4px;font-size:9px;font-weight:600;text-align:center;width:max-content">INVOICED</span><span style="font-family:var(--mono);color:var(--ink)">&pound;2,120</span></div>
 </div>
 </div>
-<p class="pricing-footer">All plans include onboarding support. No implementation fees hidden in small print.<br>Pricing confirmed after a 30-minute discovery call.</p>
 </div>
-</section>
+</div>
+</div>
+</div>
 
-<section id="demo" class="final-cta glow-wrap">
-<div class="glow glow-magenta" style="top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.12;width:700px;height:700px"></div>
-<div class="glow glow-blue" style="top:0;left:20%;opacity:0.1;width:500px;height:500px"></div>
-<div class="container" style="position:relative;z-index:1">
-<h2>See your operation <span class="grad-text">in Stok.ly.</span></h2>
-<p class="final-cta-body">Book a 30-minute discovery call. We&rsquo;ll show you how Stok.ly works with your channels, your warehouse setup, and your specific workflows. And if it&rsquo;s not a fit, we&rsquo;ll tell you.</p>
-<div class="final-cta-buttons">
-<a href="https://calendly.com/stokly/online-demo" class="btn btn-primary" target="_blank" rel="noopener">Book Your Demo</a>
-<a href="#" class="btn btn-ghost-dark">Download the WMS Buyer&rsquo;s Guide</a>
+<!-- Feature 3: AI -->
+<div class="feature">
+<div class="feature-inner">
+<div class="feature-copy">
+<span class="feature-tag"><span class="feature-tag-dot orange"></span>AI Demand Forecasting</span>
+<h2>Stop guessing. <em>Start forecasting.</em></h2>
+<p class="feature-desc">Demand prediction, automated purchase order generation, and intelligent stock balancing across locations. Configurable to your lead times, minimum stock levels, and supplier constraints.</p>
+<ul class="feature-list">
+<li><span class="feature-check">&#10003;</span><span>AI-generated purchase orders based on demand signals</span></li>
+<li><span class="feature-check">&#10003;</span><span>Stock transfer recommendations between locations</span></li>
+<li><span class="feature-check">&#10003;</span><span>Pick-face replenishment sequenced by pick rate</span></li>
+<li><span class="feature-check">&#10003;</span><span>Supplier constraint modelling and lead time optimisation</span></li>
+</ul>
+<a href="#" class="btn-arrow">Explore AI forecasting <span>&rarr;</span></a>
 </div>
-<p class="final-cta-note">No obligation. No sales pressure. 30 minutes.</p>
+<div class="feature-visual">
+<div class="browser-mock">
+<div class="browser-bar">
+<div class="browser-dots"><span></span><span></span><span></span></div>
+<div class="browser-url">app.stok.ly/forecast</div>
 </div>
-</section>
-
-<footer class="site-footer">
-<div class="container">
-<div class="footer-grid">
+<div class="browser-body" style="padding:24px;min-height:360px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;justify-content:space-between;align-items:center">
 <div>
-<div class="footer-wordmark"><img src="stokly-logo-v2.svg" alt="Stok.ly" class="footer-logo"></div>
-<p class="footer-tagline">Operational control for UK retail &amp; wholesale.</p>
+<div style="font-family:var(--display);font-size:18px;font-weight:600;color:var(--ink)">SKU-4280 &middot; Next 30 days</div>
+<div style="font-size:12px;color:var(--muted);margin-top:2px">Demand forecast vs. actual</div>
+</div>
+<div style="display:flex;gap:6px"><span style="padding:3px 8px;background:var(--cream);border-radius:6px;font-size:10px;color:var(--muted)">7d</span><span style="padding:3px 8px;background:var(--ink);color:#fff;border-radius:6px;font-size:10px">30d</span><span style="padding:3px 8px;background:var(--cream);border-radius:6px;font-size:10px;color:var(--muted)">90d</span></div>
+</div>
+<svg viewBox="0 0 400 140" style="width:100%;height:auto">
+<defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF8300" stop-opacity="0.2"/><stop offset="100%" stop-color="#FF8300" stop-opacity="0"/></linearGradient></defs>
+<line x1="0" y1="70" x2="400" y2="70" stroke="#EFEAE0" stroke-width="1"/>
+<line x1="0" y1="35" x2="400" y2="35" stroke="#EFEAE0" stroke-width="1"/>
+<line x1="0" y1="105" x2="400" y2="105" stroke="#EFEAE0" stroke-width="1"/>
+<polyline points="0,100 40,95 80,88 120,75 160,78 200,60" fill="none" stroke="#6B7280" stroke-width="2" stroke-dasharray="3 3"/>
+<polyline points="200,60 240,50 280,42 320,32 360,22 400,15" fill="url(#ag)" stroke="none" style="clip-path:polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 40%)"/>
+<polyline points="200,60 240,50 280,42 320,32 360,22 400,15" fill="none" stroke="#FF8300" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="200" y1="0" x2="200" y2="140" stroke="#E5E0D6" stroke-width="1" stroke-dasharray="2 2"/>
+<text x="205" y="12" font-family="JetBrains Mono" font-size="9" fill="#6B7280">Today</text>
+<circle cx="400" cy="15" r="4" fill="#FF8300"/>
+<circle cx="400" cy="15" r="8" fill="none" stroke="#FF8300" stroke-width="1" opacity="0.3"/>
+</svg>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+<div style="background:rgba(255,131,0,0.08);border:1px solid rgba(255,131,0,0.2);border-radius:10px;padding:14px;text-align:center"><div style="font-family:var(--display);font-size:22px;font-weight:600;color:var(--orange)">94.2%</div><div style="font-size:10px;color:var(--muted);margin-top:2px">Accuracy</div></div>
+<div style="background:rgba(234,29,118,0.08);border:1px solid rgba(234,29,118,0.2);border-radius:10px;padding:14px;text-align:center"><div style="font-family:var(--display);font-size:22px;font-weight:600;color:var(--accent)">12 hrs</div><div style="font-size:10px;color:var(--muted);margin-top:2px">Saved/week</div></div>
+<div style="background:rgba(0,155,222,0.08);border:1px solid rgba(0,155,222,0.2);border-radius:10px;padding:14px;text-align:center"><div style="font-family:var(--display);font-size:22px;font-weight:600;color:var(--blue)">1,420</div><div style="font-size:10px;color:var(--muted);margin-top:2px">Reorder qty</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CUSTOMER STORY -->
+<section id="story" class="story rev">
+<div class="container">
+<div class="story-inner">
+<div class="story-image">
+<img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80" alt="Operations Director at a UK warehouse">
+<div class="story-image-overlay">
+<div class="story-image-overlay-name">Matt</div>
+<div class="story-image-overlay-role">Appleton Sweets &middot; 4 years with Stok.ly</div>
+</div>
+</div>
+<div class="story-copy">
+<span class="eyebrow">Customer story</span>
+<blockquote class="story-quote">The Stock App cut our pick and pack errors to almost zero overnight.</blockquote>
+<div class="story-metrics">
+<div>
+<div class="story-metric-value">~0%</div>
+<div class="story-metric-label">Pick and pack error rate after switching to Stok.ly</div>
+</div>
+<div>
+<div class="story-metric-value">4 yrs</div>
+<div class="story-metric-label">Years Appleton Sweets has run on the platform</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section id="integrations" class="section section-cream rev">
+<div class="container">
+<div class="section-header">
+<span class="eyebrow">Integrations</span>
+<h2>Connects to <em>everything</em> you already use.</h2>
+<p class="section-sub">290+ prebuilt integrations across ecommerce, accounting, and shipping. Plus a full REST API.</p>
+</div>
+
+<div class="integ-counts">
+<div class="integ-count blue"><div class="integ-count-num">200+</div><div class="integ-count-label">eCommerce &amp; marketplaces</div></div>
+<div class="integ-count magenta"><div class="integ-count-num">20+</div><div class="integ-count-label">Accounting platforms</div></div>
+<div class="integ-count orange"><div class="integ-count-num">70+</div><div class="integ-count-label">Courier &amp; freight</div></div>
+</div>
+
+<div class="integ-grid">
+<div class="integ-card"><div class="integ-card-logo"><img src="https://stokly.proudbrands.uk/images/integrations/shopify.svg" alt=""></div><span class="integ-card-name">Shopify</span></div>
+<div class="integ-card"><div class="integ-card-logo"><img src="https://stokly.proudbrands.uk/images/integrations/woocommerce.svg" alt=""></div><span class="integ-card-name">WooCommerce</span></div>
+<div class="integ-card"><div class="integ-card-logo"><img src="https://stokly.proudbrands.uk/images/integrations/amazon.svg" alt=""></div><span class="integ-card-name">Amazon</span></div>
+<div class="integ-card"><div class="integ-card-logo"><img src="https://stokly.proudbrands.uk/images/integrations/ebay.svg" alt=""></div><span class="integ-card-name">eBay</span></div>
+<div class="integ-card"><div class="integ-card-logo"><img src="https://stokly.proudbrands.uk/images/integrations/xero.svg" alt=""></div><span class="integ-card-name">Xero</span></div>
+<div class="integ-card"><div class="integ-card-logo"><img src="https://stokly.proudbrands.uk/images/integrations/sage.svg" alt=""></div><span class="integ-card-name">Sage</span></div>
+<div class="integ-card"><div class="integ-card-logo"><img src="https://stokly.proudbrands.uk/images/integrations/quickbooks.svg" alt=""></div><span class="integ-card-name">QuickBooks</span></div>
+<div class="integ-card"><div class="integ-card-logo"><img src="https://stokly.proudbrands.uk/images/integrations/royal-mail.svg" alt=""></div><span class="integ-card-name">Royal Mail</span></div>
+<div class="integ-card"><div class="integ-card-logo"><img src="https://stokly.proudbrands.uk/images/integrations/dpd.svg" alt=""></div><span class="integ-card-name">DPD</span></div>
+<div class="integ-card"><div class="integ-card-logo"><img src="https://stokly.proudbrands.uk/images/integrations/dhl.svg" alt=""></div><span class="integ-card-name">DHL</span></div>
+<div class="integ-card"><div class="integ-card-logo"><img src="https://stokly.proudbrands.uk/images/integrations/fedex.svg" alt=""></div><span class="integ-card-name">FedEx</span></div>
+<div class="integ-card"><div class="integ-card-logo"><img src="https://stokly.proudbrands.uk/images/integrations/ups.svg" alt=""></div><span class="integ-card-name">UPS</span></div>
+</div>
+
+<div class="integ-cta">
+<a href="#" class="btn btn-ghost">View all 290+ integrations</a>
+</div>
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section section-paper rev">
+<div class="container">
+<div class="section-header">
+<span class="eyebrow">Customer outcomes</span>
+<h2>What customers <em>actually say.</em></h2>
+</div>
+
+<div class="reviews">
+<div class="review">
+<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="review-quote">Stok.ly works really well. It&rsquo;s user friendly and does everything we expected. New staff pick it up very quickly.</p>
+<div class="review-author">
+<div class="review-avatar">RS</div>
+<div class="review-meta">
+<span class="review-name">Ryan S.</span>
+<span class="review-co">Senior Sales &amp; Systems Manager, Airtec</span>
+</div>
+</div>
+</div>
+<div class="review">
+<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="review-quote">Having used other systems in the past we find Stok.ly to be second to none. Comprehensive, stable and user friendly.</p>
+<div class="review-author">
+<div class="review-avatar">SB</div>
+<div class="review-meta">
+<span class="review-name">Scott B.</span>
+<span class="review-co">Operations Manager &middot; Capterra verified</span>
+</div>
+</div>
+</div>
+<div class="review">
+<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="review-quote">Stok.ly has revolutionised the way I manage my inventory, and I couldn&rsquo;t be more thrilled with the team behind it.</p>
+<div class="review-author">
+<div class="review-avatar">HT</div>
+<div class="review-meta">
+<span class="review-name">Hand Tool Centre</span>
+<span class="review-co">Retail &middot; Capterra verified</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="review-platforms">
+<div class="review-platform"><span class="review-platform-name">Trustpilot</span><span class="review-platform-score">4.0 / 5</span></div>
+<div class="review-platform"><span class="review-platform-name">Capterra</span><span class="review-platform-score">4.9 / 5</span></div>
+<div class="review-platform"><span class="review-platform-name">G2</span><span class="review-platform-score">4.4 / 5</span></div>
+</div>
+</div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="section section-cream rev">
+<div class="container">
+<div class="section-header">
+<span class="eyebrow">Pricing</span>
+<h2>One plan. <em>Every module.</em> No per-user fees.</h2>
+<p class="section-sub">Priced for growing UK businesses, not enterprise budgets. All plans include onboarding support.</p>
+</div>
+
+<div class="pricing-grid">
+<div class="price">
+<div class="price-name">Lite Retail</div>
+<div class="price-amount"><span class="price-amount-num">&pound;299.99</span><span class="price-amount-mo">/mo</span></div>
+<div class="price-from">Annual discount available</div>
+<ul class="price-feat">
+<li><svg class="price-feat-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Multi-location OMS &amp; PIM</li>
+<li><svg class="price-feat-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Warehouse &amp; shipping</li>
+<li><svg class="price-feat-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Email support</li>
+</ul>
+<div class="price-cta"><a href="#demo" class="btn btn-ghost">Get a quote</a></div>
+</div>
+<div class="price">
+<div class="price-name">Pro Warehouse</div>
+<div class="price-amount"><span class="price-amount-num">&pound;599.99</span><span class="price-amount-mo">/mo</span></div>
+<div class="price-from">Annual discount available</div>
+<ul class="price-feat">
+<li><svg class="price-feat-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Everything in Lite Retail</li>
+<li><svg class="price-feat-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Manufacturing &amp; pre-allocation</li>
+<li><svg class="price-feat-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>API access</li>
+<li><svg class="price-feat-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Email and live chat support</li>
+</ul>
+<div class="price-cta"><a href="#demo" class="btn btn-ghost">Get a quote</a></div>
+</div>
+<div class="price featured">
+<span class="price-pop">Most popular</span>
+<div class="price-name">Cloud ERP</div>
+<div class="price-amount"><span class="price-amount-num">&pound;1,199.99</span><span class="price-amount-mo">/mo</span></div>
+<div class="price-from">Annual discount available</div>
+<ul class="price-feat">
+<li><svg class="price-feat-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>AI forecasting included</li>
+<li><svg class="price-feat-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Kitting, ePOS, custom reporting</li>
+<li><svg class="price-feat-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Full API and integrations</li>
+<li><svg class="price-feat-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Phone, chat, and email support</li>
+</ul>
+<div class="price-cta"><a href="#demo" class="btn btn-primary">Get a quote</a></div>
+</div>
+<div class="price">
+<div class="price-name">Enterprise</div>
+<div class="price-amount"><span class="price-amount-num">&pound;2,999.99</span><span class="price-amount-mo">/mo</span></div>
+<div class="price-from">Custom quoted</div>
+<ul class="price-feat">
+<li><svg class="price-feat-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Unlimited multi-location</li>
+<li><svg class="price-feat-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Dedicated success team</li>
+<li><svg class="price-feat-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>AI assistant and forecasting</li>
+<li><svg class="price-feat-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Priority phone, chat, email</li>
+</ul>
+<div class="price-cta"><a href="#demo" class="btn btn-ghost">Talk to sales</a></div>
+</div>
+</div>
+<p class="pricing-foot">No implementation fees hidden in small print. Pricing confirmed after a 30-minute discovery call.</p>
+</div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="demo" class="final">
+<div class="final-card rev">
+<h2>See your operation <em>in Stok.ly.</em></h2>
+<p>Book a 30-minute walkthrough. We&rsquo;ll show you how Stok.ly works with your channels, your warehouse setup, and your specific workflows. If it&rsquo;s not a fit, we&rsquo;ll tell you.</p>
+<div class="final-ctas">
+<a href="https://calendly.com/stokly/online-demo" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Book your demo</a>
+<a href="#" class="btn btn-light btn-lg">Download the buyer&rsquo;s guide</a>
+</div>
+<p class="final-note">No obligation. No sales pressure. 30 minutes.</p>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+<div class="footer-inner">
+<div>
+<img src="stokly-logo.svg" alt="Stok.ly" class="footer-logo">
+<p class="footer-tag">Operational control for UK retail, wholesale, and manufacturing.</p>
 <div class="footer-contact">
 Hereford &amp; Cheltenham, United Kingdom<br>
 Sales: 01432 804 333<br>
-<a href="mailto:sales@stok.ly" style="color:var(--blue)">sales@stok.ly</a>
+<a href="mailto:sales@stok.ly">sales@stok.ly</a>
 </div>
 </div>
 <div class="footer-col">
@@ -901,8 +907,6 @@ Sales: 01432 804 333<br>
 <li><a href="#">Order Management</a></li>
 <li><a href="#">AI Forecasting</a></li>
 <li><a href="#">Manufacturing &amp; Kitting</a></li>
-<li><a href="#">Retail POS</a></li>
-<li><a href="#">Trade POS</a></li>
 <li><a href="#">Integrations</a></li>
 <li><a href="#">Pricing</a></li>
 </ul>
@@ -910,20 +914,19 @@ Sales: 01432 804 333<br>
 <div class="footer-col">
 <h4>Company</h4>
 <ul>
-<li><a href="#">About Us</a></li>
-<li><a href="#">Case Studies</a></li>
-<li><a href="#">Blog</a></li>
+<li><a href="#">About us</a></li>
+<li><a href="#">Customer stories</a></li>
 <li><a href="#">Partners</a></li>
 <li><a href="#">Contact</a></li>
-<li><a href="#">Privacy Policy</a></li>
-<li><a href="#">Terms</a></li>
+<li><a href="#">Careers</a></li>
 </ul>
 </div>
 <div class="footer-col">
 <h4>Support</h4>
 <ul>
+<li><a href="#">Help centre</a></li>
 <li><a href="#">Implementation</a></li>
-<li><a href="#">API Documentation</a></li>
+<li><a href="#">API documentation</a></li>
 <li><a href="mailto:support@stok.ly">support@stok.ly</a></li>
 </ul>
 </div>
@@ -953,64 +956,19 @@ mobileNav.classList.remove('is-open');
 });
 });
 }
-var nav=document.querySelector('.site-nav');
-// Pillar tabs
-var tabs=document.querySelectorAll('.pillar-tab');
-var panels=document.querySelectorAll('.pillar-panel');
-tabs.forEach(function(tab){
-tab.addEventListener('click',function(){
-tabs.forEach(function(t){t.classList.remove('active');t.setAttribute('aria-selected','false')});
-panels.forEach(function(p){p.classList.remove('active')});
-tab.classList.add('active');
-tab.setAttribute('aria-selected','true');
-var target=document.getElementById('panel-'+tab.getAttribute('data-panel'));
-if(target)target.classList.add('active');
-});
-});
-
-if(nav){
-window.addEventListener('scroll',function(){
-if(window.pageYOffset>60){nav.classList.add('scrolled')}
-else{nav.classList.remove('scrolled')}
-},{passive:true});
-}
-var revealEls=document.querySelectorAll('.reveal');
+var nav=document.querySelector('.nav');
+if(nav){window.addEventListener('scroll',function(){
+if(window.pageYOffset>40)nav.classList.add('scrolled');
+else nav.classList.remove('scrolled');
+},{passive:true});}
 if('IntersectionObserver' in window){
-revealEls.forEach(function(el){el.classList.add('reveal-ready')});
 var obs=new IntersectionObserver(function(entries){
-entries.forEach(function(e){
-if(e.isIntersecting){e.target.classList.add('is-visible');obs.unobserve(e.target)}
-});
-},{threshold:0.08,rootMargin:'0px 0px -20px 0px'});
-revealEls.forEach(function(el){obs.observe(el)});
+entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}});
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rev').forEach(function(el){obs.observe(el)});
+}else{
+document.querySelectorAll('.rev').forEach(function(el){el.classList.add('in')});
 }
-function animateCounters(){
-var els=document.querySelectorAll('[data-target]');
-els.forEach(function(el){
-var target=parseFloat(el.getAttribute('data-target'));
-var suffix=el.getAttribute('data-suffix')||'';
-var prefix=el.getAttribute('data-prefix')||'';
-var decimals=parseInt(el.getAttribute('data-decimals'))||0;
-var duration=1200;
-var start=performance.now();
-function step(now){
-var progress=Math.min((now-start)/duration,1);
-var ease=1-Math.pow(1-progress,3);
-var current=target*ease;
-if(decimals>0){el.textContent=prefix+current.toFixed(decimals)+suffix}
-else{el.textContent=prefix+Math.floor(current).toLocaleString()+suffix}
-if(progress<1)requestAnimationFrame(step);
-}
-requestAnimationFrame(step);
-});
-}
-var heroObs=new IntersectionObserver(function(entries){
-entries.forEach(function(e){
-if(e.isIntersecting){animateCounters();heroObs.unobserve(e.target)}
-});
-},{threshold:0.3});
-var widget=document.querySelector('.stats-widget');
-if(widget)heroObs.observe(widget);
 })();
 </script>
 </body>
